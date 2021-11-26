@@ -17,7 +17,16 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            filename: "index.html",
             template: './index.html',
+        }),
+        new HtmlWebpackPlugin({
+            filename: "signup.html",
+            template: './signup.html',
+        }),
+        new HtmlWebpackPlugin({
+            filename: "movies.html",
+            template: './movies.html',
         }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
@@ -25,6 +34,10 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, 'src/favicon.png'),
                     to: path.resolve(__dirname, 'dist'),
+                },
+                {
+                    from: path.resolve(__dirname, 'src/images/Kinoteka-logo.svg'),
+                    to: path.resolve(__dirname, 'dist/images'),
                 }
             ]
         }),
@@ -37,7 +50,11 @@ module.exports = {
                 use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.m?js$/,
+                test: /\.(png|jpg|gif|svg)$/,
+                type: 'asset/resource'
+            },
+            {
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
