@@ -18,17 +18,17 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: './index.html',
-            favicon: "./favicon.png"
+            favicon: "./images/favicons/favicon.png"
         }),
         new HtmlWebpackPlugin({
             filename: "signup.html",
             template: './signup.html',
-            favicon: "./favicon.png"
+            favicon: "./images/favicons/favicon.png"
         }),
         new HtmlWebpackPlugin({
             filename: "movies.html",
             template: './movies.html',
-            favicon: "./favicon.png"
+            favicon: "./images/favicons/favicon.png"
         }),
         new CleanWebpackPlugin(),
         new ESLintPlugin(),
