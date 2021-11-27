@@ -19,28 +19,31 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: './index.html',
+            favicon: "./favicon.png"
         }),
         new HtmlWebpackPlugin({
             filename: "signup.html",
             template: './signup.html',
+            favicon: "./favicon.png"
         }),
         new HtmlWebpackPlugin({
             filename: "movies.html",
             template: './movies.html',
+            favicon: "./favicon.png"
         }),
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, 'src/favicon.png'),
-                    to: path.resolve(__dirname, 'dist'),
-                },
-                {
-                    from: path.resolve(__dirname, 'src/images/Kinoteka-logo.svg'),
-                    to: path.resolve(__dirname, 'dist/images'),
-                }
-            ]
-        }),
+        // new CopyWebpackPlugin({
+        //     patterns: [
+        //         {
+        //             from: path.resolve(__dirname, 'src/favicon.png'),
+        //             to: path.resolve(__dirname, 'dist'),
+        //         },
+        //         {
+        //             from: path.resolve(__dirname, 'src/images/Kinoteka-logo.svg'),
+        //             to: path.resolve(__dirname, 'dist/images'),
+        //         }
+        //     ]
+        // }),
         new ESLintPlugin(),
     ],
     module: {
