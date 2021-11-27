@@ -1,6 +1,6 @@
 .basic-link {
     min-width: 100px;
-    min-height: 30px;
+    height: 30px;
     color: var(--light-primary-color);
     letter-spacing: 0.1em;
 
@@ -24,4 +24,49 @@
 .basic-link:active {
     background-color: var(--light-primary-color-opacity);
     border-color: transparent;
+}
+
+.basic-btn {
+    min-width: 300px;
+    height: 40px;
+    padding: 10px 20px;
+
+    font-size: 14px;
+    line-height: 1;
+    text-transform: capitalize;
+    letter-spacing: 0.1em;
+    color: var(--light-primary-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+    background-color: var(--primary-color);
+
+    transition: all 0.2s ease;
+}
+
+.basic-btn:hover {
+    background-color: var(--primary-color-opacity);
+}
+
+.basic-btn:active {
+    background-color: var(--light-primary-color);
+    color: var(--dark-primary-color);
+}
+
+.basic-btn:disabled {
+    background-color: var(--primary-color-disabled);
+    color: var(--light-primary-color-opacity);
+    cursor: not-allowed;
+}
+
+.frosted-glass-effect {
+    width: 400px;
+    height: 350px;
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.2) -50%, rgba(255, 255, 255, 0.05) 80%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
 }
