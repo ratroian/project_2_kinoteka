@@ -3,6 +3,9 @@
     --dark-primary-color-opacity: #151C267F;
     --light-primary-color: #DBDEE5;
     --light-primary-color-opacity: #DBDEE580;
+    --primary-color: #5C5470;
+    --primary-color-opacity: #5C547080;
+    --primary-color-disabled: #5C547033;
 }
 
 body {
@@ -10,6 +13,7 @@ body {
     color: var(--light-primary-color);
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    letter-spacing: 0.1em;
 }
 
 a {
