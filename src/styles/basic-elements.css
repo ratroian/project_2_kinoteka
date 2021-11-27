@@ -1,0 +1,27 @@
+.basic-link {
+    min-width: 100px;
+    min-height: 30px;
+    color: var(--light-primary-color);
+    letter-spacing: 0.1em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid var(--light-primary-color);
+    border-radius: 5px;
+
+    padding: 5px;
+
+    transition: all 0.25s ease;
+}
+
+.basic-link:hover {
+    background-color: var(--light-primary-color);
+    color: var(--dark-primary-color);
+}
+
+.basic-link:active {
+    background-color: var(--light-primary-color-opacity);
+    border-color: transparent;
+}

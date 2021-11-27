@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
@@ -17,27 +16,39 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            filename: "index.html",
             template: './index.html',
+            favicon: "./images/favicons/favicon.png"
+        }),
+        new HtmlWebpackPlugin({
+            filename: "signup.html",
+            template: './signup.html',
+            favicon: "./images/favicons/favicon.png"
+        }),
+        new HtmlWebpackPlugin({
+            filename: "movies.html",
+            template: './movies.html',
+            favicon: "./images/favicons/favicon.png"
         }),
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, 'src/favicon.png'),
-                    to: path.resolve(__dirname, 'dist'),
-                }
-            ]
-        }),
         new ESLintPlugin(),
     ],
     module: {
         rules: [
             {
+                test: /\.html$/i,
+                loader: "html-loader",
+            },
+            {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.m?js$/,
+                test: /\.(png|jpg|gif|svg)$/,
+                type: 'asset/resource'
+            },
+            {
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
