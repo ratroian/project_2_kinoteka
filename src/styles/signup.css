@@ -1,0 +1,85 @@
+.signup__form {
+    max-width: 400px;
+    height: 545px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    z-index: 2;
+}
+
+.signup__form::before, 
+.signup__form::after {
+    content: "";
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
+    position: absolute;
+}
+
+.signup__form::before {
+    left: -75px;
+    bottom: -75px;
+    z-index: -1;
+}
+
+.signup__form::after {
+    right: -75px;
+    top: -75px;
+}
+
+
+.signup__fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup__input-wrapper:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.signup__input {
+    width: 300px;
+    background: none;
+    margin: 4px 0;
+}
+
+.input-wrapper__input {
+    padding: 18px 0px 18px 15px;
+
+}
+
+#signup__firstname, 
+#signup__lastname {
+    background-image: url(../images/icons_for_forma/name.svg);   
+    background-repeat: no-repeat;   
+    background-position: 265px;
+}
+
+#signup__login {
+    background-image: url(../images/icons_for_forma/login.svg);   
+    background-repeat: no-repeat;   
+    background-position: 265px;
+}
+
+#signup__password {
+    background-image: url(../images/icons_for_forma/password.svg);   
+    background-repeat: no-repeat;   
+    background-position: 265px;
+}
+
+.invalid {
+    font-size: 12px;
+    color: red;
+    /* opacity: 0; */
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kinoteka</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/basic-elements.css">
+    <link rel="stylesheet" href="styles/body.css">
+    <link rel="stylesheet" href="styles/font-roboto.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/signin.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header__container">
+                <div class="header__logo">
+                    <a href="./index.html" class="header__logo-link">
+                        <img class="header__logo-image" src="./images/logo/Kinoteka-logo.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="header__links">
+                    <a href="./index.html" class="basic-link header__links-item">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <form class="signin__form frosted-glass-effect">
+                <div class="signin__fields">
+                    <div class="input-wrapper signin__input-wrapper">
+                        <label for="signin__login" class="input-wrapper__label">Login</label>
+                        <input id="signin__login" type="text" name="login" class="input-wrapper__input signin__input basic-link" placeholder="Enter your login" autocomplete="off">
+                        <p class="signin__invalid invalid">Invalid value</p>
+                    </div>
+                    <div class="input-wrapper signin__input-wrapper">
+                        <label for="signin__password" class="input-wrapper__label">Password</label>
+                        <input id="signin__password" type="password" name="password" class="input-wrapper__input signin__input basic-link" placeholder="Enter your password" autocomplete="off">
+                        <p class="signin__invalid invalid">Invalid value</p>
+                    </div>
+                </div>
+                <button class="button signin__btn basic-btn" type="button">Sign in</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
