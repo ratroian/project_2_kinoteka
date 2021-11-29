@@ -1,0 +1,84 @@
+#filter-btn {
+    right: 0%;
+    min-width: 100px;
+    height: 40px;
+}
+.center {
+    display: flex;
+    justify-content: center;
+}
+.movies {
+    margin-top: 47px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.place-right {
+    display: flex;
+    justify-content: end;
+  }
+.small-poster{ 
+    width: 340px;
+    height: 250px;
+    border-radius: 10px;
+}
+.film-description {
+    width: 340px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 200px;
+    background-color: #0000007a;
+    text-align: center;
+    border-radius: 10px;
+    align-items: center;
+}
+.card {
+    width: 340px;
+    height: 250px;
+    font-size: 16px;
+    position: relative;
+    margin-bottom: 80px;
+}
+.film-name {
+    margin: 10px;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+.film-duration {
+    margin: 10px;
+}
+.dark-screen {
+    width: 340px;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    background-color: #0000007a;
+    border-radius: 10px;
+}
+.dark-screen:hover, .dark-screen:focus {
+    opacity: 0;
+    cursor: pointer;
+}
+.film-rate {
+    width: 50px;
+    height: 22px;
+    position: absolute;
+    left: -10px;
+    top: 10px;
+   
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    border-radius: 10px;
+    text-align: center;
+}
+.good-rate {
+    background-color: #246724;
+}
+.bad-rate {
+    background-color: #5B5B5B;
+}
