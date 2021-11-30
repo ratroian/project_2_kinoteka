@@ -26,7 +26,27 @@
 
 <main class="main">
     <div class="container">
-
+        <div class="form-wrapper form-wrapper__signin">
+            <form class="form frosted-glass-effect">
+                <div class="fields">
+                    <div class="input-wrapper">
+                        <label for="login" class="input-wrapper__label">Login</label>
+                        <input id="signin__login" type="text" name="login"
+                            class="input-wrapper__input input-login input-register" placeholder="Enter your login"
+                            autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="signin__password" class="input-wrapper__label">Password</label>
+                        <input id="signin__password" type="password" name="password"
+                            class="input-wrapper__input input-password input-register" placeholder="Enter your password"
+                            autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                </div>
+                <button class="basic-btn" type="button">Sign in</button>
+            </form>
+        </div>
     </div>
 </main>
 

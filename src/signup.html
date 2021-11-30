@@ -6,14 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kinoteka</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/basic-elements.css">
-    <link rel="stylesheet" href="styles/body.css">
-    <link rel="stylesheet" href="styles/font-roboto.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/signin.css">
-    <link rel="stylesheet" href="styles/signup.css">
 </head>
 <body>
 
@@ -34,35 +26,37 @@
 
 <main class="main">
     <div class="container">
-        <form class="signup__form frosted-glass-effect">
-            <div class="signup__fields">
-                <div class="input-wrapper signup__input-wrapper">
-                    <label for="signup__firstname" class="input-wrapper__label">First name</label>
-                    <input id="signup__firstname" type="text" name="firstname" class="input-wrapper__input signup__input basic-link" placeholder="Enter your first name" autocomplete="off">
-                    <p class="signup__invalid invalid">Invalid value</p>
+        <div class="form-wrapper form-wrapper__signup">
+            <form class="form frosted-glass-effect">
+                <div class="fields">
+                    <div class="input-wrapper">
+                        <label for="signup__firstname" class="input-wrapper__label">First name</label>
+                        <input id="signup__firstname" type="text" name="firstname" class="input-wrapper__input input-name input-register" placeholder="Enter your first name" autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="signup__lastname" class="input-wrapper__label">Last name</label>
+                        <input id="signup__lastname" type="text" name="lastname" class="input-wrapper__input input-name input-register"
+                            placeholder="Enter your last name" autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="signup__login" class="input-wrapper__label">Login</label>
+                        <input id="signup__login" type="text" name="login" class="input-wrapper__input input-login input-register"
+                            placeholder="Enter your login" autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="signup__password" class="input-wrapper__label">Password</label>
+                        <input id="signup__password" type="password" name="password"
+                            class="input-wrapper__input input-password input-register" placeholder="Enter your password"
+                            autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
                 </div>
-                <div class="input-wrapper signup__input-wrapper">
-                    <label for="signup__lastname" class="input-wrapper__label">Last name</label>
-                    <input id="signup__lastname" type="text" name="lastname" class="input-wrapper__input signup__input basic-link"
-                        placeholder="Enter your last name" autocomplete="off">
-                    <p class="signup__invalid invalid">Invalid value</p>
-                </div>
-                <div class="input-wrapper signup__input-wrapper">
-                    <label for="signup__login" class="input-wrapper__label">Login</label>
-                    <input id="signup__login" type="text" name="login" class="input-wrapper__input signup__input basic-link"
-                        placeholder="Enter your login" autocomplete="off">
-                    <p class="signup__invalid invalid">Invalid value</p>
-                </div>
-                <div class="input-wrapper signup__input-wrapper">
-                    <label for="signup__password" class="input-wrapper__label">Password</label>
-                    <input id="signup__password" type="password" name="password"
-                        class="input-wrapper__input signup__input basic-link" placeholder="Enter your password"
-                        autocomplete="off">
-                    <p class="signup__invalid invalid">Invalid value</p>
-                </div>
-            </div>
-            <button class="button signup__btn basic-btn" type="button">Sign in</button>
-        </form>
+                <button class="basic-btn" type="button">Sign up</button>
+            </form>
+        </div>
     </div>
 </main>
 

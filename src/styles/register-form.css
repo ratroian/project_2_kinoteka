@@ -1,17 +1,24 @@
-.signin__form {
-    max-width: 400px;
-    height: 342px;
+.form-wrapper {
     margin: auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
     position: relative;
     z-index: 2;
 }
 
-.signin__form::before, 
-.signin__form::after {
+.form-wrapper__signin {
+    max-width: 400px;
+    height: 342px;
+    margin-top: 235px;
+}
+
+.form-wrapper__signup {
+    max-width: 400px;
+    height: 545px;
+    margin-top: 113px;
+}
+
+.form-wrapper::before, 
+.form-wrapper::after {
     content: "";
     width: 150px;
     height: 150px;
@@ -20,19 +27,28 @@
     position: absolute;
 }
 
-.signin__form::before {
+.form-wrapper::before {
     left: -75px;
     bottom: -75px;
     z-index: -1;
 }
 
-.signin__form::after {
+.form-wrapper::after {
     right: -75px;
     top: -75px;
 }
 
+.form {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
-.signin__fields {
+.fields {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,31 +60,23 @@
     flex-direction: column;
 }
 
-.signin__input-wrapper:first-child {
+.input-wrapper:not(:last-child) {
     margin-bottom: 24px;
 }
 
-
-
-.signin__input {
-    width: 300px;
-    background: none;
-    margin: 4px 0;
+.input-name {
+    background-image: url(../images/icons_for_forma/name.svg);   
+    background-repeat: no-repeat;   
+    background-position: 265px;
 }
 
-
-.input-wrapper__input {
-    padding: 18px 0px 18px 15px;
-
-}
-
-#signin__login {
+.input-login {
     background-image: url(../images/icons_for_forma/login.svg);   
     background-repeat: no-repeat;   
     background-position: 265px;
 }
 
-#signin__password {
+.input-password {
     background-image: url(../images/icons_for_forma/password.svg);   
     background-repeat: no-repeat;   
     background-position: 265px;
