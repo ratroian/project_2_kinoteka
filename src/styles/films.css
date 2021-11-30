@@ -3,6 +3,26 @@
     min-width: 100px;
     height: 40px;
 }
+.header__links {
+    display: flex;
+    justify-content: space-between;
+}
+.log-out {
+    margin-right: 18px;
+    cursor: pointer;
+}
+.bubble {
+    position: absolute;
+    z-index: -1;
+}
+.right {
+    top: 210px;
+    right: 155px;
+}
+.left {
+    top: 550px;
+    left: 155px;
+}
 .center {
     display: flex;
     justify-content: center;

@@ -18,6 +18,8 @@
                 </a>
             </div>
             <div class="header__links">
+                <a href="./index.html">
+                <img class="log-out" src="./images/films/log of.svg" alt="Logo"></a>
                 <a href="./index.html" class="basic-link header__links-item">Log Out</a>
             </div>
         </div>
@@ -30,6 +32,8 @@
             <button class="basic-btn" id="filter-btn">Filters</button>
         </div>
         <div class="movies">
+            <img class="bubble right" src="./images/films/round.svg" alt="Logo"></a>
+            <img class="bubble left" src="./images/films/round.svg" alt="Logo"></a>
             <div class="card">
                 <div class="film-poster">
                     <img src="https://image.tmdb.org/t/p/original/lXhgCODAbBXL5buk9yEmTpOoOgR.jpg" class="small-poster">
@@ -189,5 +193,25 @@
     </div>
 </main>
 
+<script type="text/template" id="filmItemTemplate">
+    <div class="card">
+        <div class="film-poster">
+            <img src="https://image.tmdb.org/t/p/original/{{backdrop_path}}" class="small-poster">
+        </div>
+        <div class="film-description">
+            <div class="film-name">
+                <span>{{original_title}}</span>
+            </div>
+            <div class="film-duration">
+                <span>{{runtime}}</span>
+            </div>
+        </div>
+        <div class="dark-screen">
+        </div>
+        <div class="film-rate good-rate">
+            <span>{{popularity}}</span>
+        </div>
+    </div>
+</script>
 </body>
 </html>
