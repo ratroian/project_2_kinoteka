@@ -30,6 +30,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    position: relative;
 }
 .place-right {
     display: flex;
@@ -107,8 +108,8 @@
     border-radius: 50%;
     background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
     position: absolute;
-    top: 210px;
-    right: 155px;
+    top: 40px;
+    right: -75px;
     z-index: -1;
 }
 .movies::before {content: "";
@@ -117,7 +118,7 @@
     border-radius: 50%;
     background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
     position: absolute;
-    top: 550px;
-    left: 155px;
+    bottom: 140px;
+    left: -75px;
     z-index: -1;
 }
