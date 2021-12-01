@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
 }
-.header__links::before {
+.log_out::before {
     cursor: pointer;
     display: inline-flex;
     content: '';
