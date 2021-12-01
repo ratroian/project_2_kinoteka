@@ -6,6 +6,7 @@
     --primary-color: #5C5470;
     --primary-color-opacity: #5C547080;
     --primary-color-disabled: #5C547033;
+    --primary-color-invalid: #ff0000;
 }
 
 body {
@@ -14,6 +15,9 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     letter-spacing: 0.1em;
+
+    display: flex;
+    flex-direction: column;
 }
 
 a {
