@@ -25,8 +25,38 @@
 </header>
 
 <main class="main">
-    <div class="container">
-
+    <div class="container main__container">
+        <div class="form-wrapper">
+            <form class="form frosted-glass-effect">
+                <div class="fields">
+                    <div class="input-wrapper">
+                        <label for="signup__firstname" class="input-wrapper__label">First name</label>
+                        <input id="signup__firstname" type="text" name="firstname" class="input-wrapper__input input-name input-register" placeholder="Enter your first name" autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="signup__lastname" class="input-wrapper__label">Last name</label>
+                        <input id="signup__lastname" type="text" name="lastname" class="input-wrapper__input input-name input-register"
+                            placeholder="Enter your last name" autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="signup__login" class="input-wrapper__label">Login</label>
+                        <input id="signup__login" type="text" name="login" class="input-wrapper__input input-login input-register"
+                            placeholder="Enter your login" autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="signup__password" class="input-wrapper__label">Password</label>
+                        <input id="signup__password" type="password" name="password"
+                            class="input-wrapper__input input-password input-register" placeholder="Enter your password"
+                            autocomplete="off">
+                        <p class="invalid">Invalid value</p>
+                    </div>
+                </div>
+                <button class="basic-btn" type="button">Sign up</button>
+            </form>
+        </div>
     </div>
 </main>
 
