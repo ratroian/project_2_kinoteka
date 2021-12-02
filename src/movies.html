@@ -13,12 +13,12 @@
     <div class="container">
         <div class="header__container">
             <div class="header__logo">
-                <a href="./index.html" class="header__logo-link">
+                <a href="./movies.html" class="header__logo-link">
                     <img class="header__logo-image" src="./images/logo/Kinoteka-logo.svg" alt="Logo">
                 </a>
             </div>
             <div class="header__links">
-                <a href="./index.html" class="basic-link header__links-item">Log Out</a>
+                <a id="log-out" href="./index.html" class="basic-link header__links-item">Log Out</a>
             </div>
         </div>
     </div>
@@ -27,22 +27,22 @@
 <main class="main">
     <div class="container">
 
-        <div id="movie-list" style="display: flex; flex-wrap: wrap;">
+        <div id="movie-list" style="display: flex; flex-wrap: wrap; margin-right: -20px">
 
         </div>
 
-        <div class="buttons">
-            <button id="load-more">Load More</button>
+        <div class="buttons" style="display: flex; justify-content: center">
+            <button id="load-more" style="margin-bottom: 25px; padding: 10px 25px">Load More</button>
         </div>
     </div>
 </main>
 
 <script type="text/template" id="filmItemTemplate">
-    <div class="card" style="margin-bottom: 25px">
-        <div class="film-poster">
-            <img width="200" src="https://image.tmdb.org/t/p/original/{{backdrop_path}}" class="small-poster">
+    <div class="card" style="margin-bottom: 25px; width: 340px; height: 250px; margin-right: 20px;">
+        <div class="film-poster" style="background-color: #000; height: 190px;">
+            <img width="340" src="https://image.tmdb.org/t/p/original/{{backdrop_path}}" class="small-poster">
         </div>
-        <div class="film-description">
+        <div class="film-description" style="display: flex; justify-content: space-between; padding: 5px 0;">
             <div class="film-name">
                 <span>{{title}}</span>
             </div>

@@ -1,19 +1,21 @@
+import { MOVIE_ON_PAGE, PER_PAGE } from "../constants";
+
 export const clearPagesFromLocalStorage = () => {
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.startsWith('page')) {
-            localStorage.removeItem(key);
-            i--;
-        }
-    }
+   localStorage.clear();
 }
 
-export const savePageToLocalStorage = (key, value) => {
-    localStorage.setItem(`page${key}`, JSON.stringify(value));
+export const savePageToLocalStorage = (value) => {
+    const movies = loadPageFromLocalStorage();
+    movies.push(value);
+    localStorage.setItem('moviesPage', JSON.stringify(movies));
 }
 
-export const loadPageFromLocalStorage = (page) => {
-    return JSON.parse(localStorage.getItem(`page${page}`));
+export const loadPageFromLocalStorage = () => {
+    return JSON.parse(localStorage.getItem('moviesPage')) ?? [];
+}
+
+export const getCurrentPageFromApi = () => {
+    return Math.ceil(loadPageFromLocalStorage().length * MOVIE_ON_PAGE / PER_PAGE);
 }
 
 export const runtimeFormatting = (runtime) => {
@@ -33,4 +35,12 @@ export const rateState = (rate) => {
     rate = Number(rate);
     if (!isFinite(rate) || rate < 7) return 'bad-rate';
     return 'good-rate';
+}
+
+export const scrollToDown = () => {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        left: 0,
+        behavior: 'smooth',
+    });
 }
