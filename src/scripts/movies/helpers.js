@@ -1,4 +1,5 @@
 import { MOVIE_ON_PAGE, PER_PAGE } from "../constants";
+import {domElements} from "./global-var";
 
 export const clearPagesFromLocalStorage = () => {
    localStorage.clear();
@@ -43,4 +44,14 @@ export const scrollToDown = () => {
         left: 0,
         behavior: 'smooth',
     });
+}
+
+export const disableLoadMoreBtn = (state) => {
+    domElements.loadMoreBtn.disabled = state;
+}
+
+export const removeListenerFromLoadBtn = (listener) => {
+    disableLoadMoreBtn(true);
+    domElements.loadMoreBtn.removeEventListener('click', listener);
+    domElements.loadMoreBtn.textContent = 'No More';
 }

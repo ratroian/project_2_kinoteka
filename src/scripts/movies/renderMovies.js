@@ -11,10 +11,11 @@ const htmlToElement = (html) => {
 
 const getMovieCard = (movie) => {
     const html = domElements.filmItemTemplate
+        .replace('{{movie_id}}', movie.id)
         .replace('{{backdrop_path}}', URL_IMG + movie.backdrop_path)
         .replace('{{title}}', movie.title)
         .replace('{{runtime}}', runtimeFormatting(movie.runtime))
-        .replace('{{class-rate}}', rateState(movie.movie_rate))
+        .replace('{{type_rate}}', rateState(movie.movie_rate))
         .replace('{{movie_rate}}', rateFormatting(movie.movie_rate));
     return htmlToElement(html);
 }
