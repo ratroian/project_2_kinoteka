@@ -1,0 +1,129 @@
+#filter-btn {
+    right: 0;
+    min-width: 100px;
+    height: 40px;
+}
+.header__links {
+    display: flex;
+    justify-content: space-between;
+}
+.log_out::before {
+    cursor: pointer;
+    display: inline-flex;
+    content: '';
+    background-image: url('../images/films/log-out.svg');
+    background-size: 34px 30px;
+    height: 30px;
+    width: 34px;
+    margin-right: 18px;
+}
+.log-out {
+    margin-right: 18px;
+    cursor: pointer;
+}
+.center {
+    display: flex;
+    justify-content: center;
+}
+.movies {
+    margin-top: 47px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 340px);
+    grid-gap: 20px;
+    justify-content: center;
+}
+.place-right {
+    display: flex;
+    justify-content: end;
+  }
+.film-poster {
+    background: #0000;
+    width: 100%;
+    height: 200px;
+}
+.small-poster{ 
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+.film-description {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    background: #000000ce;
+    border-radius: 0 0 10px 10px;
+}
+.card {
+    width: 340px;
+    height: 250px;
+    font-size: 16px;
+    position: relative;
+    margin-bottom: 80px;
+    border-radius: 10px;
+}
+.film-name {
+    margin: 10px;
+    max-width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+.film-duration {
+    max-width: 20%;
+    margin: 10px;
+}
+.film-description::before {
+    content: "";
+    width: 340px;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    background-color: #00000057;
+    border-radius: 10px;
+}
+.film-description:hover::before {
+    opacity: 0;
+    cursor: pointer;
+}
+.film-rate {
+    width: 50px;
+    height: 22px;
+    position: absolute;
+    left: -10px;
+    top: 10px;
+   
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    border-radius: 5px;
+    text-align: center;
+}
+.good-rate {
+    background-color: #246724;
+}
+.bad-rate {
+    background-color: #5B5B5B;
+}
+.movies::after {content: "";
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
+    position: absolute;
+    top: 210px;
+    right: 155px;
+    z-index: -1;
+}
+.movies::before {content: "";
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
+    position: absolute;
+    top: 550px;
+    left: 155px;
+    z-index: -1;
+}
