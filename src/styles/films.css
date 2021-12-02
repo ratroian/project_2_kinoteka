@@ -27,31 +27,34 @@
 }
 .movies {
     margin-top: 47px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 340px);
+    grid-gap: 20px;
+    justify-content: center;
 }
 .place-right {
     display: flex;
     justify-content: end;
   }
+.film-poster {
+    background: #0000;
+    width: 100%;
+    height: 200px;
+}
 .small-poster{ 
-    width: 340px;
-    height: 250px;
+    width: 100%;
+    height: 200px;
     border-radius: 10px;
 }
 .film-description {
-    width: 340px;
+    width: 100%;
     height: 50px;
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    top: 200px;
-    background-color: #0000007a;
     text-align: center;
-    border-radius: 10px;
     align-items: center;
+    background: #000000ce;
+    border-radius: 0px 0px 10px 10px;
 }
 .card {
     width: 340px;
@@ -63,23 +66,25 @@
 }
 .film-name {
     margin: 10px;
-    max-width: 250px;
+    max-width: 75%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; 
 }
 .film-duration {
+    max-width: 20%;
     margin: 10px;
 }
-.dark-screen {
+.film-description::before {
+    content: "";
     width: 340px;
     height: 250px;
     position: absolute;
     top: 0;
-    background-color: #0000007a;
+    background-color: #00000057;
     border-radius: 10px;
 }
-.dark-screen:hover, .dark-screen:focus {
+.film-description:hover::before {
     opacity: 0;
     cursor: pointer;
 }
@@ -108,8 +113,8 @@
     border-radius: 50%;
     background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
     position: absolute;
-    top: 40px;
-    right: -75px;
+    top: 210px;
+    right: 155px;
     z-index: -1;
 }
 .movies::before {content: "";
@@ -118,7 +123,7 @@
     border-radius: 50%;
     background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
     position: absolute;
-    bottom: 140px;
-    left: -75px;
+    top: 550px;
+    left: 155px;
     z-index: -1;
 }
