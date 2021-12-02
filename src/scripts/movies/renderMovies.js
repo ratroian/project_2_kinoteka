@@ -1,4 +1,5 @@
 import { domElements } from "./global-var";
+import { URL_IMG } from "../constants";
 import { runtimeFormatting, rateFormatting, rateState } from "./helpers";
 
 const htmlToElement = (html) => {
@@ -10,7 +11,7 @@ const htmlToElement = (html) => {
 
 const getMovieCard = (movie) => {
     const html = domElements.filmItemTemplate
-        .replace('{{backdrop_path}}', movie.backdrop_path)
+        .replace('{{backdrop_path}}', URL_IMG + movie.backdrop_path)
         .replace('{{title}}', movie.title)
         .replace('{{runtime}}', runtimeFormatting(movie.runtime))
         .replace('{{class-rate}}', rateState(movie.movie_rate))
