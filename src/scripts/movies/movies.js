@@ -55,8 +55,8 @@ const getNextPage = async () => {
 
 const checkAuthorization = async () => {
     try {
-        const token = localStorage.getItem('token');
-        if (!token || token.length < 20) {
+        const token = JSON.parse(localStorage.getItem('userData'))?.token;
+        if (!token) {
             window.location.href = './index.html';
             return;
         }
