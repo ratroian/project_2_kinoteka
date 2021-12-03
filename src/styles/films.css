@@ -56,9 +56,10 @@
 .film-poster {
     background: #000;
     width: 100%;
-    height: 200px;
-    border-radius: 10px 10px 0 0;
+    max-height: 200px;
+    height: 100%;
     overflow: hidden;
+    transition: max-height 0.5s ease;
 }
 .small-poster{ 
     width: 100%;
@@ -66,14 +67,22 @@
 }
 .film-description {
     width: 100%;
-    height: 50px;
-    padding: 10px;
+    max-height: 50px;
+    height: 100%;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     text-align: center;
-    align-items: center;
-    background: #000000ce;
-    border-radius: 0 0 10px 10px;
+    align-items: flex-end;
+    background: var(--primary-color-opacity);
+    transition: max-height 0.5s ease;
+    overflow: hidden;
+}
+.card-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 .card {
     width: 340px;
@@ -81,29 +90,41 @@
     font-size: 16px;
     position: relative;
     margin-bottom: 80px;
+    border-radius: 10px;
+}
+@keyframes unscale {
+    from {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+.card img {
+    animation: unscale 0.5s ease;
+}
+.card:hover {
+    cursor: pointer;
+}
+.card:hover img {
+    animation: scale 0.5s ease forwards;
 }
 .film-name {
     max-width: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 .film-duration {
     max-width: 30%;
-}
-.film-description::before {
-    content: "";
-    width: 340px;
-    height: 250px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #00000057;
-    border-radius: 10px;
-}
-.film-description:hover::before {
-    opacity: 0;
-    cursor: pointer;
 }
 .film-rate {
     width: 50px;

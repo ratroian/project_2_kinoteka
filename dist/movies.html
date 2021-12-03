@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kinoteka</title>
-<link rel="icon" href="favicon.png"><script defer src="main.c4f7c290fe03ba168ca0.js"></script><script defer src="movies.246fabacceee5e676352.js"></script></head>
+<link rel="icon" href="favicon.png"><script defer src="main.a52aa3335bb199c9847b.js"></script><script defer src="movies.246fabacceee5e676352.js"></script></head>
 <body>
 
 <header class="header">
@@ -38,19 +38,21 @@
 
 <script type="text/template" id="filmItemTemplate">
     <div class="card" data-movie-id="{{movie_id}}">
-        <div class="film-poster">
-            <img src="{{backdrop_path}}" class="small-poster">
-        </div>
-        <div class="film-description">
-            <div class="film-name">
-                <span>{{title}}</span>
+        <div class="card-wrapper">
+            <div class="film-poster">
+                <img src="{{backdrop_path}}" class="small-poster">
             </div>
-            <div class="film-duration">
-                <span>{{runtime}}</span>
+            <div class="film-description">
+                <div class="film-name">
+                    <span>{{title}}</span>
+                </div>
+                <div class="film-duration">
+                    <span>{{runtime}}</span>
+                </div>
             </div>
-        </div>
-        <div class="film-rate {{type_rate}}">
-            <span>{{movie_rate}}</span>
+            <div class="film-rate {{type_rate}}">
+                <span>{{movie_rate}}</span>
+            </div>
         </div>
     </div>
 </script>
