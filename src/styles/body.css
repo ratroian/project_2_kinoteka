@@ -15,9 +15,10 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     letter-spacing: 0.1em;
-
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 a {
@@ -28,4 +29,14 @@ a {
     max-width: 1500px;
     padding: 0 40px;
     margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--light-primary-color);
 }
