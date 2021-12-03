@@ -8,7 +8,8 @@ module.exports = {
     mode: 'development',
     entry: {
         main: ['@babel/polyfill', './scripts/app.js'],
-        authorization: ['./scripts/authorization/authorization.js']
+        authorization: ['./scripts/authorization/authorization.js'],
+        movies: ['./scripts/movies/movies.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -34,7 +35,7 @@ module.exports = {
             filename: "movies.html",
             template: './movies.html',
             favicon: "./images/favicons/favicon.png",
-            chunks: ['main']
+            chunks: ['main', 'movies']
         }),
         new CleanWebpackPlugin(),
         new ESLintPlugin(),

@@ -1,0 +1,147 @@
+.movie-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.movie-wrapper::after {
+    content: "";
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
+    position: fixed;
+    top: 50px;
+    left: -75px;
+    z-index: -1;
+}
+.movie-wrapper::before {
+    content: "";
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(225.82deg, #352F44 24.16%, #5C5470 87.91%);
+    position: fixed;
+    bottom: 50px;
+    right: -75px;
+    z-index: -1;
+}
+
+#filter-btn {
+    right: 0;
+    min-width: 100px;
+    height: 40px;
+}
+.header__links {
+    display: flex;
+    justify-content: space-between;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.movies {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 340px);
+    grid-gap: 20px;
+    justify-content: center;
+    flex-grow: 1;
+}
+.place-right {
+    display: flex;
+    justify-content: end;
+    flex-shrink: 0;
+  }
+.film-poster {
+    background: #000;
+    width: 100%;
+    max-height: 200px;
+    height: 100%;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+.small-poster{ 
+    width: 100%;
+    height: 200px;
+}
+.film-description {
+    width: 100%;
+    max-height: 50px;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: flex-end;
+    background: var(--primary-color-opacity);
+    transition: max-height 0.5s ease;
+    overflow: hidden;
+}
+.card-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.card {
+    width: 340px;
+    height: 250px;
+    font-size: 16px;
+    position: relative;
+    margin-bottom: 80px;
+    border-radius: 10px;
+}
+@keyframes unscale {
+    from {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+.card img {
+    animation: unscale 0.5s ease;
+}
+.card:hover {
+    cursor: pointer;
+}
+.card:hover img {
+    animation: scale 0.5s ease forwards;
+}
+.film-name {
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.film-duration {
+    max-width: 30%;
+}
+.film-rate {
+    width: 50px;
+    height: 22px;
+    position: absolute;
+    left: -10px;
+    top: 10px;
+   
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    border-radius: 5px;
+    text-align: center;
+}
+.good-rate {
+    background-color: #246724;
+}
+.bad-rate {
+    background-color: #5B5B5B;
+}

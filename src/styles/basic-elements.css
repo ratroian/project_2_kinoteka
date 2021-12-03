@@ -62,6 +62,48 @@
     cursor: not-allowed;
 }
 
+.basic-btn:disabled.loader {
+    color: transparent;
+}
+
+.loader {
+    position: relative;
+    color: transparent;
+}
+
+.loader:after,
+.loader:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--light-primary-color);
+    border-radius: 50%;
+    animation: loader 0.6s ease alternate infinite;
+    -webkit-animation: loader 0.6s ease alternate infinite;
+}
+
+.loader:before {
+    left: 45%;
+    animation-delay: 0.2s;
+}
+
+.loader:after {
+    right: 45%;
+    animation-delay: 0.4s;
+}
+
+@keyframes loader {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .frosted-glass-effect {
     background: linear-gradient(155deg, rgba(255, 255, 255, 0.2) -50%, rgba(255, 255, 255, 0.05) 80%);
     border: 1px solid rgba(255, 255, 255, 0.3);
