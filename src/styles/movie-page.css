@@ -1,0 +1,30 @@
+.movie-details {
+    width: 1420px;
+    height: 650px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.space-between {
+    height: 39px;
+    min-width: 20px;
+}
+.base-gaps {
+    display: flex;
+   margin: 50px;
+    gap: 25px;
+}
+.overview-text{
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 0.1em;
+}
+.title{
+    font-size: 64px;
+    margin: 50px 0 5px;
+}
+.movie-header {
+    font-size: 36px;
+    margin-left: 50px;
+}

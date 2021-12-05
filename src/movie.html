@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kinoteka</title>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="./movies.html" class="header__logo-link">
+                    <img class="header__logo-image" src="./images/logo/Kinoteka-logo.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="header__links">
+                <a id="log-out" href="./index.html" class="basic-link header__links-item">Log Out</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="main">
+    <div class="container movie-wrapper">
+        <div class="title">
+            <span>Lord of the Rings: The Return of the King</span>
+        </div>
+        <div class="movie-details" style="
+         background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://image.tmdb.org/t/p/original/lXhgCODAbBXL5buk9yEmTpOoOgR.jpg');
+         background-size: cover;">
+            <div class="short-info base-gaps">
+                <div class="basic-link space-between">PG-13</div>
+                <div class="basic-link space-between">201m</div>
+                <div class="basic-link space-between">popularity: 80/100</div>
+            </div>
+            <span class="movie-header">Genres</span>
+            <div class="genres base-gaps">
+                <div class="basic-btn space-between">Fantasy</div>
+                <div class="basic-btn space-between">Advanture</div> 
+                <div class="basic-btn space-between">Action</div>     
+            </div>
+            <span class="movie-header">Overview</span> 
+            <div class="overview base-gaps">
+                <p class="overview-text">Aragorn is revealed as the heir to the ancient kings as he,
+                 Gandalf and the other members of the broken fellowship struggle to save Gondor from Sauron's forces. Meanwhile, 
+                 Frodo and Sam take the ring closer to the heart of Mordor, the dark lord's realm.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script type="text/template" id="MovieTemplate">
+    <div class="title">
+        <span>{{title}}</span>
+    </div>
+    <div class="movie-details" style="
+     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('{{backdrop_path}}');
+     background-size: cover;">
+        <div class="short-info base-gaps">
+            <div class="basic-link space-between">{{adult}}</div>
+            <div class="basic-link space-between">{{runtime}}</div>
+            <div class="basic-link space-between">popularity: {{popularity}}/100</div>
+        </div>
+        <span class="movie-header">Genres</span>
+        <div class="genres base-gaps">
+
+        </div>
+        <span class="movie-header">Overview</span> 
+        <div class="overview base-gaps">
+            <p class="overview-text">{{overview}}</p>
+        </div>
+</script>
+<script type="text/template" id="GenreTemplate">
+    <div class="basic-btn space-between">{{genre_ids}}</div>     
+</script>
+</body>
+</html>
