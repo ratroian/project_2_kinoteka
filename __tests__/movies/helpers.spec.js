@@ -61,25 +61,25 @@ describe('On helpers.js', () => {
 
     describe('On rateState', () => {
         it('should return string "bad-rate" for rate is null', () => {
-            expect(helpers.rateState(null)).toBe('bad-rate');
+            expect(helpers.getRateState(null)).toBe('bad-rate');
         });
 
         it('should return string "bad-rate" for rate is NaN', () => {
-            expect(helpers.rateState(NaN)).toBe('bad-rate');
+            expect(helpers.getRateState(NaN)).toBe('bad-rate');
         });
 
         it('should return string "bad-rate" for rate is Infinity', () => {
-            expect(helpers.rateState(Infinity)).toBe('bad-rate');
+            expect(helpers.getRateState(Infinity)).toBe('bad-rate');
         });
 
         it('should return string "bad-rate" for rate is less than 7', () => {
             const randomNumber = Math.floor(Math.random() * 7);
-            expect(helpers.rateState(randomNumber)).toBe('bad-rate');
+            expect(helpers.getRateState(randomNumber)).toBe('bad-rate');
         });
 
         it('should return string "bad-rate" for rate is greater than or equal 7', () => {
             const randomNumber = Math.floor(Math.random() * 10) + 7;
-            expect(helpers.rateState(randomNumber)).toBe('good-rate');
+            expect(helpers.getRateState(randomNumber)).toBe('good-rate');
         });
     });
 });

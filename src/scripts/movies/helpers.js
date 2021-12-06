@@ -28,23 +28,23 @@ export const getCurrentPageFromApi = () => (
     Math.ceil((loadPageFromLocalStorage().length * MOVIE_ON_PAGE) / PER_PAGE)
 );
 
-export const runtimeFormatting = (runtime) => {
+export const formatRuntime = (runtime) => {
     if (typeof runtime !== 'number' || !Number.isFinite(runtime) || runtime < 1) return 'null';
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
     return `${hours}h ${minutes}m`;
 };
 
-export const rateFormatting = (rate) => rate || NO_RATE;
+export const formatRate = (rate) => rate || NO_RATE;
 
-export const rateState = (rate) => {
+export const getRateState = (rate) => {
     if (rate === null) return BAD_RATE;
     rate = Number(rate);
     if (!Number.isFinite(rate) || rate < 7) return BAD_RATE;
     return GOOD_RATE;
 };
 
-export const scrollToDown = () => {
+export const scrollToDownPage = () => {
     window.scrollTo({
         top: document.body.scrollHeight,
         left: 0,

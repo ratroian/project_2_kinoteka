@@ -42,7 +42,7 @@ export const getNextPage = async () => {
         console.error(error.message);
         removeListenerFromLoadBtn(getNextPage);
     } finally {
-        setTimeout(helpers.scrollToDown, 200);
+        setTimeout(helpers.scrollToDownPage, 200);
     }
 };
 
