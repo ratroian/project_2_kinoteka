@@ -31,7 +31,7 @@ export const getCurrentPageFromApi = () => (
 export const runtimeFormatting = (runtime) => {
     if (typeof runtime !== 'number' || !Number.isFinite(runtime) || runtime < 1) return 'null';
     const hours = Math.floor(runtime / 60);
-    const minutes = runtime - hours * 60;
+    const minutes = runtime % 60;
     return `${hours}h ${minutes}m`;
 };
 

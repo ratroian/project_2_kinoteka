@@ -5,7 +5,7 @@ import { checkAuthorization, getNextPage } from './requests';
 const handleLogOut = (event) => {
     event.preventDefault();
     clearPagesFromLocalStorage();
-    window.location.href = event.target.href;
+    window.location.assign(event.target.href);
 };
 
 window.addEventListener('load', checkAuthorization);

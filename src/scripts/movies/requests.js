@@ -4,7 +4,7 @@ import { domElements, globalVar } from './global-var';
 import { disableLoadMoreBtn, removeListenerFromLoadBtn, renderPage } from './render-movies';
 import { PER_PAGE, URL_MOVIE } from '../constants';
 
-const getMoviesFromAPI = async (page = 1) => {
+export const getMoviesFromAPI = async (page = 1) => {
     try {
         const response = await axios.get(`${URL_MOVIE}?page=${page}&per_page=${PER_PAGE}`);
         return response.data;
@@ -14,7 +14,7 @@ const getMoviesFromAPI = async (page = 1) => {
     }
 };
 
-const getMovies = async () => {
+export const getMovies = async () => {
     try {
         disableLoadMoreBtn(true);
         domElements.loadMoreBtn.classList.add('loader');
@@ -50,7 +50,7 @@ export const checkAuthorization = async () => {
     try {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = './index.html';
+            window.location.assign('./index.html');
             return;
         }
         await getNextPage();
