@@ -36,8 +36,77 @@
     </div>
 </main>
 
+<div id="filters-modal" class="filters-modal-box hide">
+    <form id="filters" name="filters" class="form-filters frosted-glass-effect" action="#">
+        <div class="form-filters__header">
+            <input type="text" name="movie-title" id="movie-title" placeholder="Search..." class="basic-field">
+
+            <select name="movie-status" id="movie-status" class="basic-field">
+                <option selected value="">Movie status</option>
+                <option value="released">Released</option>
+                <option value="rumored">Rumored</option>
+                <option value="canceled">Canceled</option>
+                <option value="planned">Planned</option>
+                <option value="inProduction">In Production</option>
+                <option value="postProduction">Post Production</option>
+            </select>
+
+            <select name="movie-language" id="movie-language" class="basic-field">
+                <option selected value="">Languages</option>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="ru">Russian</option>
+                <option value="ua">Ukrainian</option>
+            </select>
+        </div>
+        <div class="form-filters__ranges">
+            <div id="budget" class="form-filters__ranges__item double-range">
+                <div class="double-range__title">Budget, $</div>
+                <div class="double-range__info">
+                    <input disabled id="budget-min" type="text" class="double-range__info-min basic-field" value="0">
+                    <input disabled id="budget-max" type="text" class="double-range__info-max basic-field" value="800 000 000">
+                </div>
+                <div class="double-range__place">
+                    <input id="budget-min-range" type="range" class="double-range__place-item" min="0" max="800000000" step="100000" value="0">
+                    <input id="budget-max-range" type="range" class="double-range__place-item" min="0" max="800000000" step="100000" value="800000000">
+                </div>
+            </div>
+            <div id="popularity" class="form-filters__ranges__item double-range">
+                <div class="double-range__title">Popularity</div>
+                <div class="double-range__info">
+                    <input disabled id="popularity-min" type="text" class="double-range__info-min basic-field" value="0">
+                    <input disabled id="popularity-max" type="text" class="double-range__info-max basic-field" value="1 000">
+                </div>
+                <div class="double-range__place">
+                    <input id="popularity-min-range" type="range" class="double-range__place-item" min="0" max="1000" step="1" value="0">
+                    <input id="popularity-max-range" type="range" class="double-range__place-item" min="0" max="1000" step="1" value="1000">
+                </div>
+            </div>
+            <div id="revenue" class="form-filters__ranges__item double-range">
+                <div class="double-range__title">Revenue</div>
+                <div class="double-range__info">
+                    <input disabled id="revenue-min" type="text" class="double-range__info-min basic-field" value="0">
+                    <input disabled id="revenue-max" type="text" class="double-range__info-max basic-field" value="200 000">
+                </div>
+                <div class="double-range__place">
+                    <input id="revenue-min-range" type="range" class="double-range__place-item" min="0" max="200000" step="1" value="0">
+                    <input id="revenue-max-range" type="range" class="double-range__place-item" min="0" max="200000" step="1" value="200000">
+                </div>
+            </div>
+        </div>
+        <div class="form-filters__release-date">
+            <input id="release-date-first" type="date" class="form-filters__release-date__item basic-field">
+            <input id="release-date-last" type="date" class="form-filters__release-date__item basic-field">
+        </div>
+        <div class="form-filters__buttons">
+            <button type="submit" class="basic-btn">Submit</button>
+            <button type="reset" class="basic-btn" disabled>Reset</button>
+        </div>
+    </form>
+</div>
+
 <script type="text/template" id="filmItemTemplate">
-    <div class="card" data-movie-id="{{movie_id}}">
+    <div class="card" data-movieId="{{movie_id}}">
         <div class="card-wrapper">
             <div class="film-poster">
                 <img src="{{backdrop_path}}" class="small-poster">

@@ -5,6 +5,8 @@ export const domElements = {
     movieList: document.querySelector('#movie-list'),
     loadMoreBtn: document.querySelector('#load-more'),
     logOutBtn: document.querySelector('#log-out'),
+    filterBtn: document.querySelector('#filter-btn'),
+    filterModalBox: document.querySelector('#filters-modal'),
 };
 
 export const globalVar = {
