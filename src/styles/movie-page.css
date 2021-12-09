@@ -6,6 +6,7 @@
     border-radius: 10px;
     padding: 50px 50px 0 50px;
     overflow-y: scroll;
+    background-size: cover;
 }
 .movie-details::-webkit-scrollbar {
     display: none;
