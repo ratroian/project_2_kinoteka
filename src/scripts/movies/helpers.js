@@ -1,57 +1,53 @@
-import { MOVIE_ON_PAGE, PER_PAGE } from "../constants";
-import {domElements} from "./global-var";
+import {
+    MOVIE_ON_PAGE, PER_PAGE, KEY_MOVIES_PAGES, NO_RATE, GOOD_RATE, BAD_RATE,
+} from '../constants';
 
 export const clearPagesFromLocalStorage = () => {
-   localStorage.clear();
-}
+    localStorage.clear();
+};
 
 export const savePageToLocalStorage = (value) => {
     const movies = loadPageFromLocalStorage();
     movies.push(value);
-    localStorage.setItem('moviesPage', JSON.stringify(movies));
-}
+    localStorage.setItem(KEY_MOVIES_PAGES, JSON.stringify(movies));
+};
 
-export const loadPageFromLocalStorage = () => {
-    return JSON.parse(localStorage.getItem('moviesPage')) ?? [];
-}
+export const saveMovies = (movies) => {
+    movies.forEach((item, index, array) => {
+        if (index % MOVIE_ON_PAGE !== 0) return;
+        const page = array.slice(index, index + MOVIE_ON_PAGE);
+        savePageToLocalStorage(page);
+    });
+};
 
-export const getCurrentPageFromApi = () => {
-    return Math.ceil(loadPageFromLocalStorage().length * MOVIE_ON_PAGE / PER_PAGE);
-}
+export const loadPageFromLocalStorage = () => (
+    JSON.parse(localStorage.getItem(KEY_MOVIES_PAGES)) ?? []
+);
 
-export const runtimeFormatting = (runtime) => {
-    if (typeof runtime !== 'number' || !isFinite(runtime) || runtime < 1) return 'null';
+export const getCurrentPageFromApi = () => (
+    Math.ceil((loadPageFromLocalStorage().length * MOVIE_ON_PAGE) / PER_PAGE)
+);
+
+export const formatRuntime = (runtime) => {
+    if (typeof runtime !== 'number' || !Number.isFinite(runtime) || runtime < 1) return 'null';
     const hours = Math.floor(runtime / 60);
-    const minutes = runtime - hours * 60;
+    const minutes = runtime % 60;
     return `${hours}h ${minutes}m`;
-}
+};
 
-export const rateFormatting = (rate) => {
-    if (rate === null) return 'NR';
-    return rate;
-}
+export const formatRate = (rate) => rate || NO_RATE;
 
-export const rateState = (rate) => {
-    if (rate === null) return 'bad-rate';
+export const getRateState = (rate) => {
+    if (rate === null) return BAD_RATE;
     rate = Number(rate);
-    if (!isFinite(rate) || rate < 7) return 'bad-rate';
-    return 'good-rate';
-}
+    if (!Number.isFinite(rate) || rate < 7) return BAD_RATE;
+    return GOOD_RATE;
+};
 
-export const scrollToDown = () => {
+export const scrollToDownPage = () => {
     window.scrollTo({
         top: document.body.scrollHeight,
         left: 0,
         behavior: 'smooth',
     });
-}
-
-export const disableLoadMoreBtn = (state) => {
-    domElements.loadMoreBtn.disabled = state;
-}
-
-export const removeListenerFromLoadBtn = (listener) => {
-    disableLoadMoreBtn(true);
-    domElements.loadMoreBtn.removeEventListener('click', listener);
-    domElements.loadMoreBtn.textContent = 'No More';
-}
+};

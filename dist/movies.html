@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kinoteka</title>
+<link rel="icon" href="favicon.png"><script defer src="main.a52aa3335bb199c9847b.js"></script><script defer src="movies.4de77564380d9693adb0.js"></script></head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="./movies.html" class="header__logo-link">
+                    <img class="header__logo-image" src="03e9b48c4ce73b502a98.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="header__links">
+                <a id="log-out" href="./index.html" class="basic-link header__links-item">Log Out</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="main">
+    <div class="container movie-wrapper">
+        <div class="place-right">
+            <button class="basic-btn" id="filter-btn">Filters</button>
+        </div>
+        <div id="movie-list" class="movies"></div>
+        <div class="center">
+            <button id="load-more" class="basic-btn" disabled>Load More</button>
+        </div>
+    </div>
+</main>
+
+<script type="text/template" id="filmItemTemplate">
+    <div class="card" data-movie-id="{{movie_id}}">
+        <div class="card-wrapper">
+            <div class="film-poster">
+                <img src="{{backdrop_path}}" class="small-poster">
+            </div>
+            <div class="film-description">
+                <div class="film-name">
+                    <span>{{title}}</span>
+                </div>
+                <div class="film-duration">
+                    <span>{{runtime}}</span>
+                </div>
+            </div>
+            <div class="film-rate {{type_rate}}">
+                <span>{{movie_rate}}</span>
+            </div>
+        </div>
+    </div>
+</script>
+</body>
+</html>

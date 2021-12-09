@@ -8,7 +8,7 @@ module.exports = {
     mode: 'development',
     entry: {
         main: ['@babel/polyfill', './scripts/app.js'],
-        movies: ['./scripts/movies/movies.js']
+        movies: ['./scripts/movies/movies.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -19,22 +19,22 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            filename: "index.html",
+            filename: 'index.html',
             template: './index.html',
-            favicon: "./images/favicons/favicon.png",
-            chunks: ['main']
+            favicon: './images/favicons/favicon.png',
+            chunks: ['main'],
         }),
         new HtmlWebpackPlugin({
-            filename: "signup.html",
+            filename: 'signup.html',
             template: './signup.html',
-            favicon: "./images/favicons/favicon.png",
-            chunks: ['main']
+            favicon: './images/favicons/favicon.png',
+            chunks: ['main'],
         }),
         new HtmlWebpackPlugin({
-            filename: "movies.html",
+            filename: 'movies.html',
             template: './movies.html',
-            favicon: "./images/favicons/favicon.png",
-            chunks: ['main', 'movies']
+            favicon: './images/favicons/favicon.png',
+            chunks: ['main', 'movies'],
         }),
         new HtmlWebpackPlugin({
             filename: "movie.html",
@@ -49,26 +49,26 @@ module.exports = {
         rules: [
             {
                 test: /\.html$/i,
-                loader: "html-loader",
+                loader: 'html-loader',
             },
             {
                 test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                type: 'asset/resource'
+                type: 'asset/resource',
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            }
+                        presets: ['@babel/preset-env'],
+                    },
+                },
+            },
         ],
     },
 };
