@@ -75,6 +75,8 @@
 }
 
 .invalid {
+    width: 300px;
+    height: 22px;
     font-size: 14px;
     color: var(--primary-color-invalid);
     opacity: 0;

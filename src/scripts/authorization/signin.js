@@ -11,7 +11,7 @@ const postSignIn =  async (body) => {
 
 const checkRequestSignIn = async (body) => {
     const responseSignIn = await postSignIn(body);
-    if (responseSignIn.token) {
+    if (responseSignIn) {
         localStorage.setItem('userData', JSON.stringify(responseSignIn));
         setTimeout(() => {
             window.location.assign('./movies.html');
