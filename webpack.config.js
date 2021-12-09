@@ -36,6 +36,12 @@ module.exports = {
             favicon: './images/favicons/favicon.png',
             chunks: ['main', 'movies'],
         }),
+        new HtmlWebpackPlugin({
+            filename: "movie.html",
+            template: './movie.html',
+            favicon: "./images/favicons/favicon.png",
+            chunks: ['main', 'movie']
+        }),
         new CleanWebpackPlugin(),
         new ESLintPlugin(),
     ],
