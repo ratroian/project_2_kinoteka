@@ -5,7 +5,7 @@ export const postSignUp =  async (body) => {
         const response = await axios.post('https://wowmeup.pp.ua/user/sing_up', body);
         return response.data;
     } catch (error) {
-        return error.response.data;
+        return error;
     }
 }
 

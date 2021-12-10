@@ -1,24 +1,26 @@
 import axios from "axios";
+import {showMessageError} from "./authorization";
 
 const postSignIn =  async (body) => {
     try {
         const response = await axios.post('https://wowmeup.pp.ua/user/sign_in', body);
-        return response.data;
+        const { headers, data } = response;
+        return {id: data.userId, token: headers['access-token']};
     } catch (error) {
-        return error.response.data;
+        return error;
     }
 }
 
 const checkRequestSignIn = async (body) => {
     const responseSignIn = await postSignIn(body);
-    if (responseSignIn) {
+    if (responseSignIn.token) {
         localStorage.setItem('userData', JSON.stringify(responseSignIn));
         setTimeout(() => {
             window.location.assign('./movies.html');
-        }, 3000);
+        }, 1500);
+    } else {
+        showMessageError()
     }
-    console.log(responseSignIn);
-
 }
 
 export const handleSubmitFormSignIn = (event) => {
@@ -34,3 +36,5 @@ export const handleSubmitFormSignIn = (event) => {
 
     checkRequestSignIn(body);
 }
+
+
