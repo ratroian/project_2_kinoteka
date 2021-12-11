@@ -80,6 +80,14 @@
     box-shadow: 0 0 5px 0 var(--light-primary-color);
 }
 
+.basic-field::placeholder {
+    transition: all 0.2s ease;
+}
+
+.basic-field:focus::placeholder {
+    opacity: 0;
+}
+
 .loader {
     position: relative;
     color: transparent;
@@ -122,6 +130,7 @@
     background: linear-gradient(155deg, rgba(255, 255, 255, 0.2) -50%, rgba(255, 255, 255, 0.05) 80%);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 25px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 

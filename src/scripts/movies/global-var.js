@@ -7,6 +7,8 @@ export const domElements = {
     logOutBtn: document.querySelector('#log-out'),
     filterBtn: document.querySelector('#filter-btn'),
     filterModalBox: document.querySelector('#filters-modal'),
+    releaseDateFirst: document.querySelector('#release-date-first'),
+    releaseDateLast: document.querySelector('#release-date-last'),
 };
 
 export const globalVar = {

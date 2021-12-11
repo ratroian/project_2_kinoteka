@@ -1,4 +1,18 @@
+import flatpickr from 'flatpickr';
 import { domElements } from './global-var';
+import 'flatpickr/dist/themes/light.css';
+import '../../styles/restyle-flatpickr.css';
+
+flatpickr(domElements.releaseDateFirst, {
+    altInput: true,
+    altFormat: 'F j, Y',
+    dateFormat: 'Y-m-d',
+});
+flatpickr(domElements.releaseDateLast, {
+    altInput: true,
+    altFormat: 'F j, Y',
+    dateFormat: 'Y-m-d',
+});
 
 const toggleClassFilters = () => {
     domElements.filterModalBox.classList.toggle('active');
