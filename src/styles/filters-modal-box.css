@@ -14,6 +14,7 @@
 
 .filters-modal-box.active {
     animation: active 0.2s linear forwards;
+    z-index: 10;
 }
 
 .filters-modal-box.hide {
@@ -137,6 +138,17 @@
     height: 20px;
 }
 
+.double-range__place:before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    background-color: var(--light-primary-color);
+}
+
 .double-range__place-item {
     position: absolute;
     left: 0;
@@ -156,9 +168,9 @@
 
 .double-range__place-item::-webkit-slider-runnable-track {
      width: 100%;
-     height: 1px;
+     height: 0;
      cursor: pointer;
-     background: var(--light-primary-color);
+     background-color: var(--light-primary-color);
      box-shadow: none;
      border: 0;
      outline: none;
@@ -171,7 +183,7 @@
      height: 18px;
      width: 18px;
      border-radius: 50%;
-     background: var(--light-primary-color);
+     background-color: var(--light-primary-color);
      cursor: pointer;
      -webkit-appearance: none;
      margin-top: -8px;
@@ -179,9 +191,9 @@
 
 .double-range__place-item::-moz-range-track {
      width: 100%;
-     height: 1px;
+     height: 0;
      cursor: pointer;
-     background: var(--light-primary-color);
+     background-color: var(--light-primary-color);
      box-shadow: none;
      border: 0;
  }
@@ -192,13 +204,13 @@
      height: 18px;
      width: 18px;
      border-radius: 50%;
-     background: var(--light-primary-color);
+     background-color: var(--light-primary-color);
      cursor: pointer;
  }
 
 .double-range__place-item::-ms-track {
      width: 100%;
-     height: 1px;
+     height: 0;
      cursor: pointer;
      background: transparent;
      border-color: transparent;
@@ -207,7 +219,7 @@
 
 .double-range__place-item::-ms-fill-lower,
 .double-range__place-item::-ms-fill-upper {
-     background: var(--light-primary-color);
+     background-color: var(--light-primary-color);
      box-shadow: none;
      border: 0;
  }
@@ -218,7 +230,7 @@
      height: 18px;
      width: 18px;
      border-radius: 50%;
-     background: var(--light-primary-color);
+     background-color: var(--light-primary-color);
      cursor: pointer;
  }
 

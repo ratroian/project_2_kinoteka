@@ -76,6 +76,10 @@
     color: var(--light-primary-color);
 }
 
+.basic-field:focus {
+    box-shadow: 0 0 5px 0 var(--light-primary-color);
+}
+
 .loader {
     position: relative;
     color: transparent;

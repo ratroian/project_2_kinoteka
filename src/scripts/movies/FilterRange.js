@@ -8,6 +8,8 @@ export default class FilterRange {
 
         this.rangeMin.addEventListener('input', this.handleRange);
         this.rangeMax.addEventListener('input', this.handleRange);
+        this.infoMin.addEventListener('input', this.formatInputNumber);
+        this.infoMax.addEventListener('input', this.formatInputNumber);
         this.handleRange();
     }
 
@@ -17,14 +19,15 @@ export default class FilterRange {
         if (rangeMinValue > rangeMaxValue) {
             [rangeMinValue, rangeMaxValue] = [rangeMaxValue, rangeMinValue];
         }
-        this.infoMin.value = this.formatNumber(rangeMinValue);
-        this.infoMax.value = this.formatNumber(rangeMaxValue);
+        this.infoMin.value = rangeMinValue.toLocaleString('en-US');
+        this.infoMax.value = rangeMaxValue.toLocaleString('en-US');
     };
 
-    // eslint-disable-next-line class-methods-use-this
-    formatNumber = (number) => {
-        number = String(number).split('').reverse();
-        return number.map((digit, index) => (index % 3 === 0 ? `${digit} ` : digit))
-            .reverse().join('');
+    formatInputNumber = (event) => {
+        const input = event.target;
+        let newValue = input.value;
+        newValue = newValue.replace(/[\D\s._-]+/g, '');
+        newValue = newValue ? parseInt(newValue, 10) : 0;
+        input.value = newValue.toLocaleString('en-US');
     };
 }

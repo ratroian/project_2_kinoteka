@@ -24,6 +24,28 @@ body {
 
 body.scroll-hidden {
     overflow: hidden;
+    position: relative;
+}
+
+body.scroll-hidden:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000000E6;
+    z-index: 5;
+
+    animation: bg-color 0.3s ease-in forwards;
+}
+
+@keyframes bg-color {
+    from {
+        background-color: transparent; }
+    to {
+        background-color: #000000E6;
+    }
 }
 
 a {
