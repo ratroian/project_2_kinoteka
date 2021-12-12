@@ -4,11 +4,13 @@ import 'flatpickr/dist/themes/light.css';
 import '../../styles/restyle-flatpickr.css';
 
 flatpickr(domElements.releaseDateFirst, {
+    wrap: true,
     altInput: true,
     altFormat: 'F j, Y',
     dateFormat: 'Y-m-d',
 });
 flatpickr(domElements.releaseDateLast, {
+    wrap: true,
     altInput: true,
     altFormat: 'F j, Y',
     dateFormat: 'Y-m-d',

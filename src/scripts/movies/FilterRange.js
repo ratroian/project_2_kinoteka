@@ -8,8 +8,8 @@ export default class FilterRange {
 
         this.rangeMin.addEventListener('input', this.handleRange);
         this.rangeMax.addEventListener('input', this.handleRange);
-        this.infoMin.addEventListener('input', this.formatInputNumber);
-        this.infoMax.addEventListener('input', this.formatInputNumber);
+        this.infoMin.addEventListener('input', this.handleInfo);
+        this.infoMax.addEventListener('input', this.handleInfo);
         this.handleRange();
     }
 
@@ -23,11 +23,18 @@ export default class FilterRange {
         this.infoMax.value = rangeMaxValue.toLocaleString('en-US');
     };
 
-    formatInputNumber = (event) => {
+    handleInfo = (event) => {
         const input = event.target;
-        let newValue = input.value;
-        newValue = newValue.replace(/[\D\s._-]+/g, '');
-        newValue = newValue ? parseInt(newValue, 10) : 0;
-        input.value = newValue.toLocaleString('en-US');
+        input.value = this.formatValue(input.value);
+        this.rangeMin.value = this.deleteNotNumber(this.infoMin.value);
+        this.rangeMax.value = this.deleteNotNumber(this.infoMax.value);
     };
+
+    formatValue = (value) => {
+        let newValue = this.deleteNotNumber(value);
+        newValue = newValue ? parseInt(newValue, 10) : 0;
+        return newValue.toLocaleString('en-US');
+    };
+
+    deleteNotNumber = (string) => string.replace(/[\D\s._-]+/g, '');
 }

@@ -55,7 +55,7 @@
     background: var(--primary-color);
     -webkit-box-shadow: none;
     box-shadow: none;
-    color: #fff;
+    color: var(--light-primary-color);
     border-color: var(--primary-color);
 }
 

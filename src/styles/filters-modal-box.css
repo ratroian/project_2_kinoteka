@@ -5,11 +5,11 @@
     width: 100%;
     height: 100%;
 
-    padding: 90px 50px 50px;
+    padding: 50px;
 
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .filters-modal-box.active {
@@ -31,7 +31,7 @@
     padding: 40px;
     -webkit-backdrop-filter: blur(50px);
     backdrop-filter: blur(50px);
-    min-width: 510px;
+    min-width: 560px;
     max-width: 1020px;
     width: 100%;
     display: flex;
@@ -151,36 +151,36 @@
     -moz-appearance: none;
     appearance: none;
     width: 100%;
+    height: 0;
     padding: 0;
     margin: 0;
-    border: 0;
-}
-
-.double-range__place-item:focus {
-    z-index: 3;
+    border: none;
+    outline: none;
+    background: none;
 }
 
 .double-range__place-item::-webkit-slider-runnable-track {
-     width: 100%;
-     height: 0;
-     cursor: pointer;
-     background-color: var(--light-primary-color);
-     box-shadow: none;
-     border: 0;
-     outline: none;
-     z-index: 0;
+    width: 100%;
+    height: 0;
+    cursor: pointer;
+    background-color: var(--light-primary-color);
+    box-shadow: none;
+    border: none;
+    outline: none;
+    z-index: 0;
 }
 
 .double-range__place-item::-webkit-slider-thumb {
-     z-index: 2;
-     position: relative;
-     height: 18px;
-     width: 18px;
-     border-radius: 50%;
-     background-color: var(--light-primary-color);
-     cursor: pointer;
-     -webkit-appearance: none;
-     margin-top: -8px;
+    z-index: 2;
+    position: relative;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-color: var(--light-primary-color);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -8px;
 }
 
 .double-range__place-item::-moz-range-track {
@@ -189,7 +189,11 @@
     cursor: pointer;
     background-color: var(--light-primary-color);
     box-shadow: none;
-    border: 0;
+    border: none;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
 }
 
 .double-range__place-item::-moz-range-thumb {
@@ -198,32 +202,7 @@
     height: 18px;
     width: 18px;
     border-radius: 50%;
-    background-color: var(--light-primary-color);
-    cursor: pointer;
-}
-
-.double-range__place-item::-ms-track {
-    width: 100%;
-    height: 0;
-    cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-}
-
-.double-range__place-item::-ms-fill-lower,
-.double-range__place-item::-ms-fill-upper {
-    background-color: var(--light-primary-color);
-    box-shadow: none;
-    border: 0;
-}
-
-.double-range__place-item::-ms-thumb {
-    z-index: 2;
-    position: relative;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
+    border: none;
     background-color: var(--light-primary-color);
     cursor: pointer;
 }
@@ -236,13 +215,6 @@
 
 .form-filters__release-date__item {
     width: 48%;
-    background-image: url("../images/filters/calendar.svg");
-    background-repeat: no-repeat;
-    background-position: right 25px top 50%;
-}
-
-::-webkit-calendar-picker-indicator {
-    opacity: 0;
 }
 
 .form-filters__buttons {
@@ -258,4 +230,61 @@
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.date-picker {
+    position: relative;
+}
+
+.date-picker__input {
+    width: 100%;
+}
+
+.date-picker__input[type="text"]:focus {
+    box-shadow: none;
+}
+
+.date-picker__clear {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid var(--light-primary-color);
+    border-radius: 0 5px 5px 0;
+    transition: all 0.2s ease;
+}
+
+.date-picker__clear i {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-picker__clear i svg {
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.date-picker__clear:hover i svg {
+    fill: var(--primary-color);
+}
+
+.date-picker__clear:active i svg {
+    fill: var(--light-primary-color);
+}
+
+.date-picker__clear:hover {
+    cursor: pointer;
+    background-color: var(--light-primary-color);
+}
+
+.date-picker__clear:active {
+    background-color: var(--primary-color-opacity);
 }
