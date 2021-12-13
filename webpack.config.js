@@ -20,22 +20,28 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            filename: "index.html",
+            filename: 'index.html',
             template: './index.html',
-            favicon: "./images/favicons/favicon.png",
-            chunks: ['main', 'authorization']
+            favicon: './images/favicons/favicon.png',
+            chunks: ['main', 'authorization'],
         }),
         new HtmlWebpackPlugin({
-            filename: "signup.html",
+            filename: 'signup.html',
             template: './signup.html',
-            favicon: "./images/favicons/favicon.png",
-            chunks: ['main', 'authorization']
+            favicon: './images/favicons/favicon.png',
+            chunks: ['main', 'authorization'],
         }),
         new HtmlWebpackPlugin({
-            filename: "movies.html",
+            filename: 'movies.html',
             template: './movies.html',
-            favicon: "./images/favicons/favicon.png",
-            chunks: ['main', 'movies']
+            favicon: './images/favicons/favicon.png',
+            chunks: ['main', 'movies'],
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'movie.html',
+            template: './movie.html',
+            favicon: './images/favicons/favicon.png',
+            chunks: ['main', 'movie'],
         }),
         new CleanWebpackPlugin(),
         new ESLintPlugin(),
@@ -44,26 +50,26 @@ module.exports = {
         rules: [
             {
                 test: /\.html$/i,
-                loader: "html-loader",
+                loader: 'html-loader',
             },
             {
                 test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                type: 'asset/resource'
+                type: 'asset/resource',
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            }
+                        presets: ['@babel/preset-env'],
+                    },
+                },
+            },
         ],
     },
 };

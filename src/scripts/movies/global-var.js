@@ -1,4 +1,4 @@
-import { getCurrentPageFromApi } from "./helpers";
+import { getCurrentPageFromApi } from './helpers';
 
 export const domElements = {
     filmItemTemplate: document.querySelector('#filmItemTemplate').innerHTML,

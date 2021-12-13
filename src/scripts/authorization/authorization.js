@@ -1,15 +1,13 @@
-import { handleSubmitForm } from "./signup";
-import { handleSubmitFormSignIn } from "./signin";
-
-const MIN_NAME_LENGTH = 2;
-const MAX_NAME_LENGTH = 25;
-const MIN_PASSWORD_LENGTH = 6;
+import { handleSubmitForm } from './signup';
+import handleSubmitFormSignIn from './signin';
+import * as constans from './constans';
+import { MIN_PASSWORD_LENGTH, CLASS_LOGIN, CLASS_PASSWORD } from './constans';
+import * as helpers from "./helpers";
 
 const signUpForm = document.querySelector('#form-signup');
 const signInForm = document.querySelector('#form-signin');
-
-signUpForm?.addEventListener('submit', handleSubmitForm);
-signInForm?.addEventListener('submit', handleSubmitFormSignIn);
+const passwordSignIn = document.querySelector('#signin__password');
+const headerLink = document.querySelector('.header a');
 
 const handleLoadWindow = () => {
     if (JSON.parse(localStorage.getItem('userData'))?.token) {
@@ -17,79 +15,40 @@ const handleLoadWindow = () => {
             window.location.assign('./movies.html');
         }, 3000);
     }
-}
+};
+
+const showMessageValidation = (element, content) => {
+    helpers.addClassToElement(element);
+    helpers.addTextContentToElement(element, content);
+};
+
+const generateMessageValidation = (event) => {
+    const { target } = event;
+    const valueLength = target.value.length;
+    helpers.removeClassToElement(target);
+
+    switch (true) {
+        case (valueLength < constans.MIN_NAME_LENGTH):
+            showMessageValidation(target, `${constans.MIN_NAME_LENGTH - valueLength} more characters.`);
+            break;
+        case (valueLength > constans.MAX_NAME_LENGTH && !passwordSignIn):
+            showMessageValidation(target, `${constans.MAX_NAME_LENGTH - valueLength} more characters.`);
+            break;
+        case (target.classList.contains(CLASS_PASSWORD) && valueLength < MIN_PASSWORD_LENGTH):
+            showMessageValidation(target, constans.TEXT_CONTENT_PASSWORD_MESSAGE);
+            break;
+        case (target.classList.contains(CLASS_LOGIN) && constans.REGULAR.test(target.value)):
+            showMessageValidation(target, constans.TEXT_CONTENT_LOGIN_MESSAGE);
+            break;
+        default:
+            target.setCustomValidity('');
+            target.reportValidity();
+    }
+};
 
 window.addEventListener('load', handleLoadWindow);
-
-const passwordSignIn = document.querySelector('#signin__password');
-
-signUpForm?.addEventListener('input', (event) => {
-    const target = event.target;
-    const valueLength = target.value.length;
-    const reg = new RegExp('^[0-9]+$')
-    target.classList.remove('error')
-
-    switch (true) {
-        case(valueLength < MIN_NAME_LENGTH):
-            target.classList.add('error');
-            target.nextElementSibling.textContent = `${  MIN_NAME_LENGTH - valueLength } more characters.`;
-            break;
-        case (valueLength > MAX_NAME_LENGTH):
-            target.classList.add('error');
-            target.nextElementSibling.textContent = `${  MAX_NAME_LENGTH - valueLength } more characters.`;
-            break;
-        case (target.classList.contains('input-login') && reg.test(target.value)):
-            target.classList.add('error');
-            target.nextElementSibling.textContent = 'Login should not consist only of numbers';
-            break;
-        case (target.classList.contains('input-password') && valueLength<MIN_PASSWORD_LENGTH):
-            target.classList.add('error');
-            target.nextElementSibling.textContent = `Password is too short. Min value 6 symbols`;
-            break;
-        default:
-            target.setCustomValidity('');
-            target.reportValidity();
-    }
-});
-
-signInForm?.addEventListener('input', (event) => {
-    let target = event.target;
-    const valueLength = target.value.length;
-    target.classList.remove('error')
-
-    switch (true) {
-        case(valueLength < MIN_NAME_LENGTH):
-            target.classList.add('error');
-            target.nextElementSibling.textContent = `${MIN_NAME_LENGTH - valueLength} more characters.`
-            break;
-        case (valueLength > MAX_NAME_LENGTH && !passwordSignIn):
-            target.classList.add('error');
-            target.nextElementSibling.textContent = `${MAX_NAME_LENGTH - valueLength} more characters.`
-            break;
-        case (target.classList.contains('input-password') && valueLength < MIN_PASSWORD_LENGTH):
-            target.classList.add('error');
-            target.nextElementSibling.textContent = `Password is too short. Min value 6 symbols`;
-            break;
-        default:
-            target.setCustomValidity('');
-            target.reportValidity();
-    }
-});
-
-const body = document.querySelector('body');
-let messageElement;
-
-export const showMessageError = () => {
-    const messageTemplate = document.querySelector('#error').content.querySelector('.error-popup');
-    // const closeErrorButton = messageTemplate.querySelector('.error__button');
-    messageElement = messageTemplate.cloneNode(true);
-
-    body.appendChild(messageElement);
-
-    body.addEventListener('click', messageDeleteHandler, {once: true});
-    // closeErrorButton.addEventListener('click', messageDeleteHandler, {once: true});
-};
-
-const messageDeleteHandler = () => {
-    messageElement.remove();
-};
+signUpForm?.addEventListener('input', generateMessageValidation);
+signInForm?.addEventListener('input', generateMessageValidation);
+signUpForm?.addEventListener('submit', handleSubmitForm);
+signInForm?.addEventListener('submit', handleSubmitFormSignIn);
+headerLink.addEventListener('click', helpers.preventDefault);

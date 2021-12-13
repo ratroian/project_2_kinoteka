@@ -1,0 +1,9 @@
+export const MIN_NAME_LENGTH = 2;
+export const MAX_NAME_LENGTH = 25;
+export const MIN_PASSWORD_LENGTH = 6;
+export const REGULAR = /^[0-9]+$/;
+export const CLASS_ERROR = 'error';
+export const CLASS_PASSWORD = 'input-password';
+export const CLASS_LOGIN = 'input-login';
+export const TEXT_CONTENT_PASSWORD_MESSAGE = 'Password is too short. Min value 6 symbols';
+export const TEXT_CONTENT_LOGIN_MESSAGE = 'Login should not consist only of numbers';

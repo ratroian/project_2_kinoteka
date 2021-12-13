@@ -1,13 +1,19 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const postSignUp =  async (body) => {
+export const postSignUp = async (body) => {
+    const btn = document.querySelector('#sign-up-button');
     try {
+        btn.classList.add('loader');
+        btn.disabled = true;
         const response = await axios.post('https://wowmeup.pp.ua/user/sing_up', body);
         return response.data;
     } catch (error) {
         return error;
+    } finally {
+        btn.classList.remove('loader');
+        btn.disabled = false;
     }
-}
+};
 
 export const checkRequest = async (body) => {
     try {
@@ -15,13 +21,13 @@ export const checkRequest = async (body) => {
         if (responseSignUp.message === 'Registration successful') {
             setTimeout(() => {
                 window.location.href = './index.html';
-            }, 3000);
+            }, 250);
         }
         console.log(responseSignUp);
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const handleSubmitForm = (event) => {
     event.preventDefault();
@@ -34,9 +40,9 @@ export const handleSubmitForm = (event) => {
     const body = {
         first_name: firstName,
         last_name: lastName,
-        login: login,
-        password: password,
+        login,
+        password,
     };
 
     checkRequest(body);
-}
+};
