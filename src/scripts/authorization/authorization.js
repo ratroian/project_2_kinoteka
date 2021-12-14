@@ -1,19 +1,15 @@
 import { handleSubmitForm } from './signup';
 import handleSubmitFormSignIn from './signin';
-import * as constans from './constans';
-import { MIN_PASSWORD_LENGTH, CLASS_LOGIN, CLASS_PASSWORD } from './constans';
-import * as helpers from "./helpers";
-
-const signUpForm = document.querySelector('#form-signup');
-const signInForm = document.querySelector('#form-signin');
-const passwordSignIn = document.querySelector('#signin__password');
-const headerLink = document.querySelector('.header a');
+import * as constants from './constants';
+import { MIN_PASSWORD_LENGTH, CLASS_LOGIN, CLASS_PASSWORD } from './constants';
+import * as helpers from './helpers';
+import domElements from './global-var';
 
 const handleLoadWindow = () => {
-    if (JSON.parse(localStorage.getItem('userData'))?.token) {
+    if (helpers.checkToken) {
         setTimeout(() => {
-            window.location.assign('./movies.html');
-        }, 3000);
+            window.location.assign(constants.MOVIES_PAGE_URL);
+        }, constants.QUANTITY_SET_TIMEOUT_SEC * 1000);
     }
 };
 
@@ -28,17 +24,17 @@ const generateMessageValidation = (event) => {
     helpers.removeClassToElement(target);
 
     switch (true) {
-        case (valueLength < constans.MIN_NAME_LENGTH):
-            showMessageValidation(target, `${constans.MIN_NAME_LENGTH - valueLength} more characters.`);
+        case (valueLength < constants.MIN_NAME_LENGTH):
+            showMessageValidation(target, `${constants.MIN_NAME_LENGTH - valueLength} more characters.`);
             break;
-        case (valueLength > constans.MAX_NAME_LENGTH && !passwordSignIn):
-            showMessageValidation(target, `${constans.MAX_NAME_LENGTH - valueLength} more characters.`);
+        case (valueLength > constants.MAX_NAME_LENGTH && !domElements.passwordSignIn):
+            showMessageValidation(target, `${constants.MAX_NAME_LENGTH - valueLength} more characters.`);
             break;
         case (target.classList.contains(CLASS_PASSWORD) && valueLength < MIN_PASSWORD_LENGTH):
-            showMessageValidation(target, constans.TEXT_CONTENT_PASSWORD_MESSAGE);
+            showMessageValidation(target, constants.TEXT_CONTENT_PASSWORD_MESSAGE);
             break;
-        case (target.classList.contains(CLASS_LOGIN) && constans.REGULAR.test(target.value)):
-            showMessageValidation(target, constans.TEXT_CONTENT_LOGIN_MESSAGE);
+        case (target.classList.contains(CLASS_LOGIN) && constants.REGULAR.test(target.value)):
+            showMessageValidation(target, constants.TEXT_CONTENT_LOGIN_MESSAGE);
             break;
         default:
             target.setCustomValidity('');
@@ -47,8 +43,8 @@ const generateMessageValidation = (event) => {
 };
 
 window.addEventListener('load', handleLoadWindow);
-signUpForm?.addEventListener('input', generateMessageValidation);
-signInForm?.addEventListener('input', generateMessageValidation);
-signUpForm?.addEventListener('submit', handleSubmitForm);
-signInForm?.addEventListener('submit', handleSubmitFormSignIn);
-headerLink.addEventListener('click', helpers.preventDefault);
+domElements.signUpForm?.addEventListener('input', generateMessageValidation);
+domElements.signInForm?.addEventListener('input', generateMessageValidation);
+domElements.signUpForm?.addEventListener('submit', handleSubmitForm);
+domElements.signInForm?.addEventListener('submit', handleSubmitFormSignIn);
+domElements.headerLink.addEventListener('click', helpers.preventDefault);

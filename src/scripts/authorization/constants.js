@@ -7,3 +7,7 @@ export const CLASS_PASSWORD = 'input-password';
 export const CLASS_LOGIN = 'input-login';
 export const TEXT_CONTENT_PASSWORD_MESSAGE = 'Password is too short. Min value 6 symbols';
 export const TEXT_CONTENT_LOGIN_MESSAGE = 'Login should not consist only of numbers';
+export const KEY_USER_DATA = 'userData';
+export const MOVIES_PAGE_URL = './movies.html';
+export const QUANTITY_SET_TIMEOUT_SEC = 3;
+export const CLASS_LOADER = 'loader';

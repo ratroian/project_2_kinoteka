@@ -1,26 +1,26 @@
 import axios from 'axios';
+import * as constants from '../constants';
+import * as helpers from './helpers';
 
 export const postSignUp = async (body) => {
     const btn = document.querySelector('#sign-up-button');
     try {
-        btn.classList.add('loader');
-        btn.disabled = true;
-        const response = await axios.post('https://wowmeup.pp.ua/user/sing_up', body);
+        helpers.setButtonLoader(btn);
+        const response = await axios.post(constants.URL_SIGN_UP, body);
         return response.data;
     } catch (error) {
         return error;
     } finally {
-        btn.classList.remove('loader');
-        btn.disabled = false;
+        helpers.removeButtonLoader(btn);
     }
 };
 
 export const checkRequest = async (body) => {
     try {
         const responseSignUp = await postSignUp(body);
-        if (responseSignUp.message === 'Registration successful') {
+        if (responseSignUp.message === constants.STATUS_REGISTRATION) {
             setTimeout(() => {
-                window.location.href = './index.html';
+                window.location.href = constants.INDEX_PAGE_URL;
             }, 250);
         }
         console.log(responseSignUp);

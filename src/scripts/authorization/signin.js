@@ -1,31 +1,31 @@
 import axios from 'axios';
 import showMessageError from './helpers';
+import * as constants from '../constants';
+import * as helpers from './helpers';
 
 const postSignIn = async (body) => {
     const btn = document.querySelector('#sign-in-button');
     try {
-        btn.classList.add('loader');
-        btn.disabled = true;
-        const response = await axios.post('https://wowmeup.pp.ua/user/sign_in', body);
+        helpers.setButtonLoader(btn);
+        const response = await axios.post(constants.URL_SIGN_IN, body);
         const { headers, data } = response;
-        return { id: data.userId, token: headers['access-token'] };
+        return { id: data.userId, token: headers[constants.ACCESS_TOKEN] };
     } catch (error) {
         return error;
     } finally {
-        btn.classList.remove('loader');
-        btn.disabled = false;
+        helpers.removeButtonLoader(btn);
     }
 };
 
 const checkRequestSignIn = async (body) => {
     const responseSignIn = await postSignIn(body);
     if (responseSignIn.token) {
-        localStorage.setItem('userData', JSON.stringify(responseSignIn));
+        localStorage.setItem(constants.KEY_USER_DATA, JSON.stringify(responseSignIn));
         setTimeout(() => {
-            window.location.assign('./movies.html');
+            window.location.assign(constants.MOVIES_PAGE_URL);
         }, 250);
     } else {
-        showMessageError('Login or password is invalid');
+        showMessageError(constants.MESSAGE_ERROR);
     }
 };
 
