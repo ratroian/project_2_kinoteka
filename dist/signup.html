@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kinoteka</title>
-<link rel="icon" href="favicon.png"><script defer src="main.bbd0491d866a6f8f76ec.js"></script></head>
+<link rel="icon" href="favicon.png"><script defer src="main.a13b287100081ca0db9c.js"></script><script defer src="authorization.66559952a66f01a88338.js"></script></head>
 <body>
 
 <header class="header">
@@ -27,38 +27,37 @@
 <main class="main">
     <div class="container main__container">
         <div class="form-wrapper">
-            <form class="form frosted-glass-effect">
+            <form class="form frosted-glass-effect" id="form-signup">
                 <div class="fields">
                     <div class="input-wrapper">
                         <label for="signup__firstname" class="input-wrapper__label">First name</label>
-                        <input id="signup__firstname" type="text" name="firstname" class="input-wrapper__input input-name input-register" placeholder="Enter your first name" autocomplete="off">
+                        <input id="signup__firstname" type="text" name="firstname" value="Ivan" class="input-wrapper__input input-name input-register" placeholder="Enter your first name" autocomplete="off">
                         <p class="invalid">Invalid value</p>
                     </div>
                     <div class="input-wrapper">
                         <label for="signup__lastname" class="input-wrapper__label">Last name</label>
-                        <input id="signup__lastname" type="text" name="lastname" class="input-wrapper__input input-name input-register"
+                        <input id="signup__lastname" type="text" name="lastname" value="Trojan" class="input-wrapper__input input-name input-register"
                             placeholder="Enter your last name" autocomplete="off">
                         <p class="invalid">Invalid value</p>
                     </div>
                     <div class="input-wrapper">
                         <label for="signup__login" class="input-wrapper__label">Login</label>
-                        <input id="signup__login" type="text" name="login" class="input-wrapper__input input-login input-register"
+                        <input id="signup__login" type="text" name="login" value="trojan1993" class="input-wrapper__input input-login input-register"
                             placeholder="Enter your login" autocomplete="off">
                         <p class="invalid">Invalid value</p>
                     </div>
                     <div class="input-wrapper">
                         <label for="signup__password" class="input-wrapper__label">Password</label>
-                        <input id="signup__password" type="password" name="password"
+                        <input id="signup__password" type="password" name="password" value="password1993"
                             class="input-wrapper__input input-password input-register" placeholder="Enter your password"
                             autocomplete="off">
                         <p class="invalid">Invalid value</p>
                     </div>
                 </div>
-                <button class="basic-btn" type="button">Sign up</button>
+                <button type="submit" class="basic-btn" id="sign-up-button">Sign up</button>
             </form>
         </div>
     </div>
 </main>
-
 </body>
 </html>

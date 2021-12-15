@@ -8,6 +8,7 @@ module.exports = {
     mode: 'development',
     entry: {
         main: ['@babel/polyfill', './scripts/app.js'],
+        authorization: ['./scripts/authorization/authorization.js'],
         movies: ['./scripts/movies/movies.js'],
     },
     output: {
@@ -22,19 +23,25 @@ module.exports = {
             filename: 'index.html',
             template: './index.html',
             favicon: './images/favicons/favicon.png',
-            chunks: ['main'],
+            chunks: ['main', 'authorization'],
         }),
         new HtmlWebpackPlugin({
             filename: 'signup.html',
             template: './signup.html',
             favicon: './images/favicons/favicon.png',
-            chunks: ['main'],
+            chunks: ['main', 'authorization'],
         }),
         new HtmlWebpackPlugin({
             filename: 'movies.html',
             template: './movies.html',
             favicon: './images/favicons/favicon.png',
             chunks: ['main', 'movies'],
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'movie.html',
+            template: './movie.html',
+            favicon: './images/favicons/favicon.png',
+            chunks: ['main', 'movie'],
         }),
         new CleanWebpackPlugin(),
         new ESLintPlugin(),

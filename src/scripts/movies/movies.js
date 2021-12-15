@@ -10,11 +10,8 @@ const handleLogOut = (event) => {
     window.location.assign(event.target.href);
 };
 
-// eslint-disable-next-line no-new
 new FilterRange('budget');
-// eslint-disable-next-line no-new
 new FilterRange('popularity');
-// eslint-disable-next-line no-new
 new FilterRange('revenue');
 
 window.addEventListener('load', checkAuthorization);

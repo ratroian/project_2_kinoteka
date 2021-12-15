@@ -9,7 +9,6 @@ export const getMoviesFromAPI = async (page = 1) => {
         const response = await axios.get(`${URL_MOVIE}?page=${page}&per_page=${PER_PAGE}`);
         return response.data;
     } catch (error) {
-        console.error(error.message);
         return [];
     }
 };
@@ -39,7 +38,6 @@ export const getNextPage = async () => {
         await getMovies();
         await getNextPage();
     } catch (error) {
-        console.error(error.message);
         removeListenerFromLoadBtn(getNextPage);
     } finally {
         setTimeout(helpers.scrollToDownPage, 200);
@@ -48,7 +46,7 @@ export const getNextPage = async () => {
 
 export const checkAuthorization = async () => {
     try {
-        const token = localStorage.getItem('token');
+        const { token } = JSON.parse(localStorage.getItem('userData'));
         if (!token) {
             window.location.assign('./index.html');
             return;

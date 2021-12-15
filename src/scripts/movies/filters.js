@@ -9,6 +9,7 @@ flatpickr(domElements.releaseDateFirst, {
     altFormat: 'F j, Y',
     dateFormat: 'Y-m-d',
 });
+
 flatpickr(domElements.releaseDateLast, {
     wrap: true,
     altInput: true,
