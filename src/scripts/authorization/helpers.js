@@ -8,9 +8,7 @@ const showMessageError = (message) => {
     const textContentTemplate = messageTemplate.querySelector('.error__message');
     textContentTemplate.textContent = message;
     messageElement = messageTemplate.cloneNode(true);
-
     body.appendChild(messageElement);
-
     body.addEventListener('click', messageDeleteHandler, { once: true });
 };
 

@@ -35,12 +35,10 @@ const handleSubmitFormSignIn = (event) => {
     const login = form.querySelector('#signin__login').value;
     const password = form.querySelector('#signin__password').value;
 
-    const body = {
+    checkRequestSignIn({
         login,
         password,
-    };
-
-    checkRequestSignIn(body);
+    });
 };
 
 export default handleSubmitFormSignIn;
