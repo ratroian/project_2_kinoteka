@@ -1,6 +1,17 @@
 export const URL_IMG = 'https://image.tmdb.org/t/p/original/';
 export const API_URL = 'https://wowmeup.pp.ua';
 export const URL_MOVIE = `${API_URL}/movie`;
+export const URL_SIGN_IN = `${API_URL}/user/sign_in`;
+export const URL_SIGN_UP = `${API_URL}/user/sing_up`;
+export const MOVIES_PAGE_URL = './movies.html';
+export const INDEX_PAGE_URL = './index.html';
+
+export const MESSAGE_ERROR = 'Login or password is invalid';
+export const STATUS_REGISTRATION = 'Registration successful';
+
+export const KEY_USER_DATA = 'userData';
+export const ACCESS_TOKEN = 'access-token';
+export const CLASS_LOADER = 'loader';
 
 export const MOVIE_ON_PAGE = 8;
 export const PER_PAGE = 40;
