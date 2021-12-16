@@ -1,17 +1,17 @@
 import axios from 'axios';
 import * as constants from '../constants';
 import * as helpers from './helpers';
+import domElements from './global-var';
 
 export const postSignUp = async (body) => {
-    const btn = document.querySelector('#sign-up-button');
     try {
-        helpers.setButtonLoader(btn);
+        helpers.setButtonLoader(domElements.signUpButton);
         const response = await axios.post(constants.URL_SIGN_UP, body);
         return response.data;
     } catch (error) {
         return error;
     } finally {
-        helpers.removeButtonLoader(btn);
+        helpers.removeButtonLoader(domElements.signUpButton);
     }
 };
 
@@ -20,12 +20,11 @@ export const checkRequest = async (body) => {
         const responseSignUp = await postSignUp(body);
         if (responseSignUp.message === constants.STATUS_REGISTRATION) {
             setTimeout(() => {
-                window.location.href = constants.INDEX_PAGE_URL;
+                window.location.assign(constants.INDEX_PAGE_URL);
             }, 250);
         }
-        console.log(responseSignUp);
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 };
 
@@ -37,12 +36,10 @@ export const handleSubmitForm = (event) => {
     const login = form.querySelector('#signup__login').value;
     const password = form.querySelector('#signup__password').value;
 
-    const body = {
+    checkRequest({
         first_name: firstName,
         last_name: lastName,
         login,
         password,
-    };
-
-    checkRequest(body);
+    });
 };

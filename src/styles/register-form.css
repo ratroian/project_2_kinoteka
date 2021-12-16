@@ -16,7 +16,7 @@
     z-index: 2;
 }
 
-.form-wrapper::before, 
+.form-wrapper::before,
 .form-wrapper::after {
     content: "";
     width: 150px;
@@ -57,20 +57,20 @@
 }
 
 .input-name {
-    background-image: url(../images/icons_for_forma/name.svg);   
-    background-repeat: no-repeat;   
+    background-image: url('../images/icons_for_forma/name.svg');
+    background-repeat: no-repeat;
     background-position: 265px;
 }
 
 .input-login {
-    background-image: url(../images/icons_for_forma/login.svg);   
-    background-repeat: no-repeat;   
+    background-image: url('../images/icons_for_forma/login.svg');
+    background-repeat: no-repeat;
     background-position: 265px;
 }
 
 .input-password {
-    background-image: url(../images/icons_for_forma/password.svg);   
-    background-repeat: no-repeat;   
+    background-image: url('../images/icons_for_forma/password.svg');
+    background-repeat: no-repeat;
     background-position: 265px;
 }
 
@@ -92,20 +92,25 @@ input.error + p {
 
 .success,
 .error-popup {
-    font-size: 32px;
+    font-size: 25px;
     color: var(--light-primary-color);
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
+    top: 100px;
+    right: 40px;
     z-index: 1100;
 
-    width: 100%;
-    height: 100%;
-    overflow: auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 1.1;
+
+    width: 300px;
+    max-height: 150px;
+    overflow: hidden;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(--primary-color);
 }

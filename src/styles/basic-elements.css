@@ -1,6 +1,6 @@
 .basic-link {
     min-width: 100px;
-    height: 30px;
+    height: 40px;
     color: var(--light-primary-color);
     letter-spacing: 0.1em;
 
@@ -66,6 +66,28 @@
     color: transparent;
 }
 
+.basic-field {
+    padding: 10px 25px;
+    background: none;
+    border: 1px solid var(--light-primary-color);
+    border-radius: 5px;
+    height: 50px;
+    font-size: 16px;
+    color: var(--light-primary-color);
+}
+
+.basic-field[type="text"]:focus {
+    box-shadow: 0 0 5px 0 var(--light-primary-color);
+}
+
+.basic-field::placeholder {
+    transition: all 0.2s ease;
+}
+
+.basic-field:focus::placeholder {
+    opacity: 0;
+}
+
 .loader {
     position: relative;
     color: transparent;
@@ -108,6 +130,7 @@
     background: linear-gradient(155deg, rgba(255, 255, 255, 0.2) -50%, rgba(255, 255, 255, 0.05) 80%);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 25px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 

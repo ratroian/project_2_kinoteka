@@ -2,18 +2,18 @@ import axios from 'axios';
 import showMessageError from './helpers';
 import * as constants from '../constants';
 import * as helpers from './helpers';
+import domElements from './global-var';
 
 const postSignIn = async (body) => {
-    const btn = document.querySelector('#sign-in-button');
     try {
-        helpers.setButtonLoader(btn);
+        helpers.setButtonLoader(domElements.signInButton);
         const response = await axios.post(constants.URL_SIGN_IN, body);
         const { headers, data } = response;
         return { id: data.userId, token: headers[constants.ACCESS_TOKEN] };
     } catch (error) {
         return error;
     } finally {
-        helpers.removeButtonLoader(btn);
+        helpers.removeButtonLoader(domElements.signInButton);
     }
 };
 

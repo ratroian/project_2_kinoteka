@@ -1,19 +1,17 @@
 import axios from 'axios';
-import { globalVar, domElements } from './global-var';
-import { URL_IMG, URL_GENRES } from '../constants';
+import { domElements, globalVar } from './global-var';
+import { URL_GENRES, URL_IMG } from '../constants';
 import {
-    formatRuntime,
+    clearPagesFromLocalStorage,
     formatRate,
+    formatRuntime,
     loadPageFromLocalStorage,
 } from '../movies/helpers';
-
-globalVar.movieId = localStorage.getItem('movieId');
 
 export function getInfoAboutFilm() {
     const moviesArr = loadPageFromLocalStorage();
     const allLoadedFilms = [].concat(...moviesArr);
-    const infoAboutFilm = allLoadedFilms.find((entry) => entry.id === Number(globalVar.movieId));
-    return infoAboutFilm;
+    return allLoadedFilms.find((entry) => entry.id === Number(globalVar.movieId));
 }
 
 export const htmlToElement = (html) => {
@@ -33,20 +31,17 @@ const getMovieDescription = ({
 } = {}) => {
     const html = domElements.movieTemplate
         .replace('{{title}}', title)
-        .replace('{{backdrop_path}}', URL_IMG + backdropPath)
+        .replace('{{backdropPath}}', URL_IMG + backdropPath)
         .replace('{{adult}}', adult)
         .replace('{{runtime}}', formatRuntime(runtime))
-        .replace('{{movie_rate}}', formatRate(movieRate))
+        .replace('{{movieRate}}', formatRate(movieRate))
         .replace('{{overview}}', overview);
     return htmlToElement(html);
 };
 
 const addMovieDescription = (obj) => {
-    console.log('[domElements.movieWrapper]', domElements.movieWrapper);
     domElements.movieWrapper.append(getMovieDescription(obj));
 };
-
-addMovieDescription(getInfoAboutFilm());
 
 const getGenresFromAPI = async () => {
     try {
@@ -90,4 +85,17 @@ const getArrayGenres = async () => {
     getArray(genres);
 };
 
-getArrayGenres();
+const handleLoadWindow = async () => {
+    globalVar.movieId = Number(window.location.hash.slice(1));
+    addMovieDescription(getInfoAboutFilm());
+    await getArrayGenres();
+};
+
+const handleLogOut = (event) => {
+    event.preventDefault();
+    clearPagesFromLocalStorage();
+    window.location.assign(event.target.href);
+};
+
+domElements.logOutBtn.addEventListener('click', handleLogOut);
+window.addEventListener('load', handleLoadWindow);

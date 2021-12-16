@@ -5,5 +5,7 @@
 @import "header.css";
 @import "register-form.css";
 @import "films.css";
+@import "filters-modal-box.css";
 @import "movie.css";
 @import "movie-page.css";
+@import "media-query.css";

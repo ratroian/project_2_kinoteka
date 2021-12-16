@@ -1,0 +1,30 @@
+@media (max-width: 1070px) {
+    .form-filters__ranges {
+        justify-content: center;
+    }
+
+    .form-filters__ranges >* {
+        margin: 0 20px 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    #movie-title {
+        flex: 1 0 100%;
+    }
+}
+
+@media (max-width: 740px) {
+    .form-filters__buttons {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .form-filters__buttons button[type="reset"] {
+        position: static;
+    }
+
+    .form-filters__ranges {
+        justify-content: center;
+    }
+}

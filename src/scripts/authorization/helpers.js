@@ -1,6 +1,5 @@
 import * as constants from './constants';
 
-const body = document.querySelector('body');
 let messageElement;
 
 const showMessageError = (message) => {
@@ -8,8 +7,8 @@ const showMessageError = (message) => {
     const textContentTemplate = messageTemplate.querySelector('.error__message');
     textContentTemplate.textContent = message;
     messageElement = messageTemplate.cloneNode(true);
-    body.appendChild(messageElement);
-    body.addEventListener('click', messageDeleteHandler, { once: true });
+    document.body.appendChild(messageElement);
+    document.body.addEventListener('click', messageDeleteHandler, { once: true });
 };
 
 const messageDeleteHandler = () => {
@@ -29,7 +28,7 @@ export const setButtonLoader = (button) => {
     button.disabled = true;
 };
 export const removeButtonLoader = (button) => {
-    button.classList.add(constants.CLASS_LOADER);
+    button.classList.remove(constants.CLASS_LOADER);
     button.disabled = false;
 };
 
