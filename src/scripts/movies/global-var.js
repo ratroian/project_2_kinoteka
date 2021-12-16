@@ -10,4 +10,5 @@ export const domElements = {
 export const globalVar = {
     pageFromApi: getCurrentPageFromApi(),
     currentPage: 0,
+    movieId: 0,
 };

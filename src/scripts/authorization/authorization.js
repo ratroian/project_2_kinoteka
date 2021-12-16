@@ -6,7 +6,7 @@ import * as helpers from './helpers';
 import domElements from './global-var';
 
 const handleLoadWindow = () => {
-    if (helpers.checkToken) {
+    if (helpers.checkToken()) {
         setTimeout(() => {
             window.location.assign(constants.MOVIES_PAGE_URL);
         }, constants.QUANTITY_SET_TIMEOUT_SEC * 1000);

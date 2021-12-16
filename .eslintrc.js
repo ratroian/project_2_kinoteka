@@ -60,5 +60,6 @@ module.exports = {
         'vars-on-top': 'error',
         'no-shadow': 'error',
         'no-bitwise': 'error',
+        'linebreak-style': ["error", "windows"],
     },
 };
