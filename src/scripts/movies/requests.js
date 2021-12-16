@@ -48,7 +48,7 @@ export const getNextPage = async () => {
 
 export const checkAuthorization = async () => {
     try {
-        const token = localStorage.getItem('token');
+        const { token } = JSON.parse(localStorage.getItem('userData')) || {};
         if (!token) {
             window.location.assign('./index.html');
             return;
