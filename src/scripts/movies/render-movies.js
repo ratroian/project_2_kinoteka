@@ -1,5 +1,5 @@
 import { domElements } from './global-var';
-import { URL_IMG, NO_MORE } from '../constants';
+import { URL_IMG, NO_MORE, CLASS_LOADER } from '../constants';
 import { formatRuntime, formatRate, getRateState } from './helpers';
 
 const htmlToElement = (html) => {
@@ -13,12 +13,12 @@ const getMovieCard = ({
     id, title, runtime, backdrop_path: backdropPath, movie_rate: movieRate,
 } = {}) => {
     const html = domElements.filmItemTemplate
-        .replace('{{movie_id}}', id)
+        .replace('{{movieId}}', id)
         .replace('{{title}}', title)
         .replace('{{runtime}}', formatRuntime(runtime))
-        .replace('{{backdrop_path}}', URL_IMG + backdropPath)
-        .replace('{{type_rate}}', getRateState(movieRate))
-        .replace('{{movie_rate}}', formatRate(movieRate));
+        .replace('{{backdropPath}}', URL_IMG + backdropPath)
+        .replace('{{typeRate}}', getRateState(movieRate))
+        .replace('{{movieRate}}', formatRate(movieRate));
     return htmlToElement(html);
 };
 
@@ -38,4 +38,14 @@ export const removeListenerFromLoadBtn = (listener) => {
     disableLoadMoreBtn(true);
     domElements.loadMoreBtn.removeEventListener('click', listener);
     domElements.loadMoreBtn.textContent = NO_MORE;
+};
+
+export const showLoader = () => {
+    disableLoadMoreBtn(true);
+    domElements.loadMoreBtn.classList.add(CLASS_LOADER);
+};
+
+export const hideLoader = () => {
+    disableLoadMoreBtn(false);
+    domElements.loadMoreBtn.classList.remove(CLASS_LOADER);
 };

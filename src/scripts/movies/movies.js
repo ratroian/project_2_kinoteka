@@ -3,6 +3,11 @@ import { clearPagesFromLocalStorage } from './helpers';
 import { checkAuthorization, getNextPage } from './requests';
 import handleFilters from './filters';
 import FilterRange from './FilterRange';
+import { MOVIE_PAGE_URL } from '../constants';
+
+new FilterRange('budget');
+new FilterRange('popularity');
+new FilterRange('revenue');
 
 const handleLogOut = (event) => {
     event.preventDefault();
@@ -10,10 +15,12 @@ const handleLogOut = (event) => {
     window.location.assign(event.target.href);
 };
 
-new FilterRange('budget');
-new FilterRange('popularity');
-new FilterRange('revenue');
+function openFilmCard(event) {
+    const movieId = Number(event.target.closest('.card').dataset.movieid);
+    window.open(`${MOVIE_PAGE_URL}#${movieId}`);
+}
 
+domElements.movieList.addEventListener('click', openFilmCard);
 window.addEventListener('load', checkAuthorization);
 domElements.loadMoreBtn.addEventListener('click', getNextPage);
 domElements.logOutBtn.addEventListener('click', handleLogOut);

@@ -10,6 +10,7 @@ module.exports = {
         main: ['@babel/polyfill', './scripts/app.js'],
         authorization: ['./scripts/authorization/authorization.js'],
         movies: ['./scripts/movies/movies.js'],
+        movie: ['./scripts/movie/movie.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
