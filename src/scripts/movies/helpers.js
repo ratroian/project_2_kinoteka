@@ -6,11 +6,19 @@ export const clearPagesFromLocalStorage = () => {
     localStorage.clear();
 };
 
+export const loadPageFromLocalStorage = () => (
+    JSON.parse(localStorage.getItem(KEY_MOVIES_PAGES)) ?? []
+);
+
 export const savePageToLocalStorage = (value) => {
     const movies = loadPageFromLocalStorage();
     movies.push(value);
     localStorage.setItem(KEY_MOVIES_PAGES, JSON.stringify(movies));
 };
+
+export const getCurrentPageFromApi = () => (
+    Math.ceil((loadPageFromLocalStorage().length * MOVIE_ON_PAGE) / PER_PAGE)
+);
 
 export const saveMovies = (movies) => {
     movies.forEach((item, index, array) => {
@@ -19,14 +27,6 @@ export const saveMovies = (movies) => {
         savePageToLocalStorage(page);
     });
 };
-
-export const loadPageFromLocalStorage = () => (
-    JSON.parse(localStorage.getItem(KEY_MOVIES_PAGES)) ?? []
-);
-
-export const getCurrentPageFromApi = () => (
-    Math.ceil((loadPageFromLocalStorage().length * MOVIE_ON_PAGE) / PER_PAGE)
-);
 
 export const formatRuntime = (runtime) => {
     if (typeof runtime !== 'number' || !Number.isFinite(runtime) || runtime < 1) return 'null';

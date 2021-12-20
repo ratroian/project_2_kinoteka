@@ -10,7 +10,7 @@ module.exports = {
     entry: {
         main: ['./scripts/app.ts'],
         authorization: ['./scripts/authorization/authorization.js'],
-        movies: ['./scripts/movies/movies.js'],
+        movies: ['./scripts/movies/movies.ts'],
         movie: ['./scripts/movie/movie.js'],
     },
     resolve: {

@@ -73,6 +73,7 @@
         "one-var-declaration-per-line": "off",
         "vars-on-top": "error",
         "no-shadow": "error",
-        "no-bitwise": "error"
+        "no-bitwise": "error",
+        "no-new": "off"
     }
 }
