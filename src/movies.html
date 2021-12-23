@@ -39,9 +39,9 @@
 <div id="filters-modal" class="filters-modal-box hide">
     <form id="filters" name="filters" class="form-filters frosted-glass-effect" action="#">
         <div class="form-filters__header">
-            <input type="text" name="movie-title" id="movie-title" placeholder="Search..." class="basic-field">
+            <input type="text" name="movie-title" id="movie-title" placeholder="Search..." class="basic-field" data-url="title" data-item="filter">
 
-            <select name="movie-status" id="movie-status" class="basic-field" title="movie status">
+            <select name="movie-status" id="movie-status" class="basic-field" title="movie status"  data-url="status" data-item="filter">
                 <option selected value="">Movie status</option>
                 <option value="released">Released</option>
                 <option value="rumored">Rumored</option>
@@ -51,7 +51,7 @@
                 <option value="postProduction">Post Production</option>
             </select>
 
-            <select name="movie-language" id="movie-language" class="basic-field" title="movie language">
+            <select name="movie-language" id="movie-language" class="basic-field" title="movie language" data-url="language" data-item="filter">
                 <option selected value="">Languages</option>
                 <option value="en">English</option>
                 <option value="fr">French</option>
@@ -63,8 +63,8 @@
             <div id="budget" class="form-filters__ranges__item double-range">
                 <div class="double-range__title">Budget, $</div>
                 <div class="double-range__info">
-                    <input id="budget-min" type="text" class="double-range__info-min basic-field" value="0">
-                    <input id="budget-max" type="text" class="double-range__info-max basic-field" value="800 000 000">
+                    <input id="budget-min" type="text" class="double-range__info-min basic-field" value="0" data-url="budget_min" data-item="filter">
+                    <input id="budget-max" type="text" class="double-range__info-max basic-field" value="800 000 000" data-url="budget_max" data-item="filter">
                 </div>
                 <div class="double-range__place">
                     <input id="budget-min-range" type="range" class="double-range__place-item" min="0" max="800000000" step="100000" value="0">
@@ -74,8 +74,8 @@
             <div id="popularity" class="form-filters__ranges__item double-range">
                 <div class="double-range__title">Popularity</div>
                 <div class="double-range__info">
-                    <input id="popularity-min" type="text" class="double-range__info-min basic-field" value="0">
-                    <input id="popularity-max" type="text" class="double-range__info-max basic-field" value="1 000">
+                    <input id="popularity-min" type="text" class="double-range__info-min basic-field" value="0" data-url="popularity_min" data-item="filter">
+                    <input id="popularity-max" type="text" class="double-range__info-max basic-field" value="1 000" data-url="popularity_max" data-item="filter">
                 </div>
                 <div class="double-range__place">
                     <input id="popularity-min-range" type="range" class="double-range__place-item" min="0" max="1000" step="1" value="0">
@@ -85,8 +85,8 @@
             <div id="revenue" class="form-filters__ranges__item double-range">
                 <div class="double-range__title">Revenue</div>
                 <div class="double-range__info">
-                    <input id="revenue-min" type="text" class="double-range__info-min basic-field" value="0">
-                    <input id="revenue-max" type="text" class="double-range__info-max basic-field" value="200 000">
+                    <input id="revenue-min" type="text" class="double-range__info-min basic-field" value="0" data-url="revenue_min" data-item="filter">
+                    <input id="revenue-max" type="text" class="double-range__info-max basic-field" value="200 000" data-url="revenue_max" data-item="filter">
                 </div>
                 <div class="double-range__place">
                     <input id="revenue-min-range" type="range" class="double-range__place-item" min="0" max="200000" step="1" value="0">
@@ -96,7 +96,7 @@
         </div>
         <div class="form-filters__release-date">
             <div id="release-date-first" class="form-filters__release-date__item date-picker">
-                <input type="text" value="" placeholder="Select Date.." data-input class="basic-field date-picker__input">
+                <input type="text" value="" placeholder="Select Date.." data-input class="basic-field date-picker__input" data-url="release_date_first" data-item="filter">
 
                 <a class="input-button date-picker__clear" title="clear" data-clear>
                     <i class="icon-close">
@@ -109,7 +109,7 @@
             </div>
 
             <div id="release-date-last" class="form-filters__release-date__item date-picker">
-                <input type="text" value="" placeholder="Select Date.." data-input class="basic-field date-picker__input">
+                <input type="text" value="" placeholder="Select Date.." data-input class="basic-field date-picker__input" data-url="release_date_last" data-item="filter">
 
                 <a class="input-button date-picker__clear" title="clear" data-clear>
                     <i class="icon-close">

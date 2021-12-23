@@ -11,6 +11,7 @@ module.exports = {
         authorization: ['./scripts/authorization/authorization.js'],
         movies: ['./scripts/movies/movies.js'],
         movie: ['./scripts/movie/movie.js'],
+        filters: ['./scripts/filters/filters.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -36,7 +37,7 @@ module.exports = {
             filename: 'movies.html',
             template: './movies.html',
             favicon: './images/favicons/favicon.png',
-            chunks: ['main', 'movies'],
+            chunks: ['main', 'movies', 'filters'],
         }),
         new HtmlWebpackPlugin({
             filename: 'movie.html',
