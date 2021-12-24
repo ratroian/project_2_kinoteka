@@ -2,7 +2,8 @@
     "compilerOptions": {
         "noEmitOnError": true,
         "target": "ES6",
-        "watch": true
+        "watch": true,
+        "moduleResolution": "Node"
     },
     "include": ["src/**/*"],
     "exclude": [

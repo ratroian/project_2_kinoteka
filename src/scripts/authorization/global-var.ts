@@ -7,6 +7,7 @@ const domElements: TDomElements = {
     headerLink: document.querySelector('.header a'),
     signInButton: document.querySelector('#sign-in-button'),
     signUpButton: document.querySelector('#sign-up-button'),
+    errorTemplate: document.querySelector('#errorTemplate').innerHTML,
 };
 
 export default domElements;
