@@ -1,9 +1,11 @@
-import axios from 'axios';
-import { URL_MOVIE } from '../constants';
-import * as render from '../movies/render-movies';
-import * as helpers from '../movies/helpers';
+import { URL_MOVIE, KEY_MOVIES_PAGES } from '../constants';
+import { domElements, globalVar } from '../movies/global-var';
+import { toggleClassFilters } from '../movies/filters';
+import { getNextPage } from '../movies/requests';
 
 const form = document.querySelector('#filters');
+const disabledButton = document.querySelector('#reset-btn');
+const filterButton = document.querySelector('#filter-btn');
 const formItems = form.querySelectorAll('[data-url]');
 
 const getUrl = () => {
@@ -16,29 +18,32 @@ const getUrl = () => {
     return result;
 };
 
-const getMoviesFromAPIFilter = async (url) => {
-    try {
-        const response = await axios.get(url);
-        return response.data;
-    } catch (error) {
-        return [];
-    }
-};
-
-const getMovies = async () => {
-    try {
-        render.showLoader();
-        const page = await getMoviesFromAPIFilter(getUrl());
-        if (page.movies.length === 0) throw new Error();
-        helpers.saveMovies(page.movies);
-    } finally {
-        render.hideLoader();
-    }
-};
-
-const formEventHandler = async (event) => {
+const formSubmitHandler = (event) => {
     event.preventDefault();
-    getMovies();
+    domElements.movieList.innerHTML = '';
+    toggleClassFilters();
+    localStorage.setItem('isFiltersApply', 'true');
+    localStorage.setItem('filtersURL', getUrl());
+    globalVar.currentPage = 0;
+    localStorage.removeItem(KEY_MOVIES_PAGES);
+    domElements.loadMoreBtn.addEventListener('click', getNextPage);
+    getNextPage();
+    disabledButton.removeAttribute('disabled');
+    filterButton.classList.add('filter-active');
 };
 
-form.addEventListener('submit', formEventHandler);
+const formResetHandler = (event) => {
+    event.preventDefault();
+    localStorage.removeItem('isFiltersApply');
+    localStorage.removeItem('filtersURL');
+    localStorage.removeItem(KEY_MOVIES_PAGES);
+    domElements.movieList.innerHTML = '';
+    globalVar.currentPage = 0;
+    toggleClassFilters();
+    getNextPage();
+    disabledButton.setAttribute('disabled', 'disabled');
+    filterButton.classList.remove('filter-active');
+};
+
+form.addEventListener('submit', formSubmitHandler);
+form.addEventListener('reset', formResetHandler);

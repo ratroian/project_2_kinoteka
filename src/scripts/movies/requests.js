@@ -5,10 +5,18 @@ import * as render from './render-movies';
 import {
     PER_PAGE, URL_MOVIE, INDEX_PAGE_URL, KEY_USER_DATA,
 } from '../constants';
+import { getCurrentPageFromApi } from './helpers';
+
+const getCurrentUrl = (page) => {
+    const filtersURL = localStorage.getItem('filtersURL');
+    const isFilters = localStorage.getItem('isFiltersApply') === 'true';
+    return isFilters ? `${filtersURL}&page=${page}&per_page=${PER_PAGE}` : `${URL_MOVIE}?page=${page}&per_page=${PER_PAGE}`;
+};
 
 export const getMoviesFromAPI = async (page = 1) => {
+    const currentUrl = getCurrentUrl(page);
     try {
-        const response = await axios.get(`${URL_MOVIE}?page=${page}&per_page=${PER_PAGE}`);
+        const response = await axios.get(currentUrl);
         return response.data;
     } catch (error) {
         return [];
@@ -18,7 +26,7 @@ export const getMoviesFromAPI = async (page = 1) => {
 export const getMovies = async () => {
     try {
         render.showLoader();
-        const page = await getMoviesFromAPI(++globalVar.pageFromApi);
+        const page = await getMoviesFromAPI(getCurrentPageFromApi() + 1);
         if (page.movies.length === 0) throw new Error();
         helpers.saveMovies(page.movies);
     } finally {

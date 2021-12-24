@@ -16,7 +16,8 @@ const handleLogOut = (event) => {
 };
 
 function openFilmCard(event) {
-    const movieId = Number(event.target.closest('.card').dataset.movieid);
+    const movieId = Number(event.target.closest('.card')?.dataset.movieid);
+    if (!movieId) return;
     window.open(`${MOVIE_PAGE_URL}#${movieId}`);
 }
 
