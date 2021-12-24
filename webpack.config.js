@@ -9,7 +9,7 @@ module.exports = {
     mode: 'development',
     entry: {
         main: ['./scripts/app.ts'],
-        authorization: ['./scripts/authorization/authorization.js'],
+        authorization: ['./scripts/authorization/authorization.ts'],
         movies: ['./scripts/movies/movies.ts'],
         movie: ['./scripts/movie/movie.js'],
     },

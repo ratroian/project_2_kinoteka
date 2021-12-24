@@ -95,8 +95,9 @@ input.error + p {
     font-size: 25px;
     color: var(--light-primary-color);
     position: absolute;
-    top: 100px;
-    right: 40px;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1100;
 
     padding: 20px;
