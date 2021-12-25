@@ -4,6 +4,7 @@ export const domElements = {
     genreTemplate: document.querySelector('#genreTemplate').innerHTML,
     genreList: document.querySelector('#genres'),
     logOutBtn: document.querySelector('#log-out'),
+    loaderFullScreen: document.querySelector('.loader-full-screen'),
 };
 
 export const globalVar = {

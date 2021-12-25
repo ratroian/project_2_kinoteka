@@ -1,6 +1,7 @@
 import { getCurrentPageFromApi } from './helpers';
+import { TDomElements, TglobalVar } from './types';
 
-export const domElements = {
+export const domElements: TDomElements = {
     filmItemTemplate: document.querySelector('#filmItemTemplate').innerHTML,
     movieList: document.querySelector('#movie-list'),
     loadMoreBtn: document.querySelector('#load-more'),
@@ -11,7 +12,7 @@ export const domElements = {
     releaseDateLast: document.querySelector('#release-date-last'),
 };
 
-export const globalVar = {
+export const globalVar: TglobalVar = {
     pageFromApi: getCurrentPageFromApi(),
     currentPage: 0,
 };
