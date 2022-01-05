@@ -9,7 +9,7 @@ export type TDomElements = {
     releaseDateLast: HTMLElement,
 };
 
-export type TglobalVar = {
+export type TGlobalVar = {
     pageFromApi: number,
     currentPage: number,
 };
