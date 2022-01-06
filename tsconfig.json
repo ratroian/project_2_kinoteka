@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "target": "ES6",
+        "watch": true,
+        "moduleResolution": "Node"
+    },
+    "include": ["src/**/*"],
+    "exclude": [
+        "node_modules",
+        "__tests__",
+        "__mocks__",
+        "dist"
+    ]
+}

@@ -2,16 +2,20 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry: {
-        main: ['@babel/polyfill', './scripts/app.js'],
-        authorization: ['./scripts/authorization/authorization.js'],
-        movies: ['./scripts/movies/movies.js'],
+        main: ['./scripts/app.ts'],
+        authorization: ['./scripts/authorization/authorization.ts'],
+        movies: ['./scripts/movies/movies.ts'],
         movie: ['./scripts/movie/movie.js'],
         filters: ['./scripts/filters/filters.js'],
+    },
+    resolve: {
+        extensions: ['.ts', '.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -46,7 +50,14 @@ module.exports = {
             chunks: ['main', 'movie'],
         }),
         new CleanWebpackPlugin(),
-        new ESLintPlugin(),
+        new ESLintPlugin({
+            extensions: ['ts, js'],
+        }),
+        new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                configFile: path.resolve(__dirname, './tsconfig.json'),
+            },
+        }),
     ],
     module: {
         rules: [
@@ -63,14 +74,9 @@ module.exports = {
                 type: 'asset/resource',
             },
             {
-                test: /\.js$/,
+                test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                    },
-                },
+                use: 'babel-loader',
             },
         ],
     },

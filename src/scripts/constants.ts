@@ -11,6 +11,8 @@ export const MOVIE_PAGE_URL = './movie.html';
 
 export const MESSAGE_ERROR = 'Login or password is invalid';
 export const STATUS_REGISTRATION = 'Registration successful';
+export const STATUS_REGISTRATION_BAD = 'Registration not success!';
+export const ALREADY_EXIST = 'already exist';
 
 export const KEY_USER_DATA = 'userData';
 export const ACCESS_TOKEN = 'access-token';
@@ -24,3 +26,5 @@ export const NO_RATE = 'NR';
 export const GOOD_RATE = 'good-rate';
 export const BAD_RATE = 'bad-rate';
 export const NO_MORE = 'No More';
+
+export const CLASS_HIDDEN = 'hidden';

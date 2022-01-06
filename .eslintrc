@@ -2,20 +2,31 @@
     "root": true,
     "env": {
         "browser": true,
-        "es2021": true,
         "node": true,
         "jest/globals": true
     },
-    "plugins": [ "jest" ],
-    "extends": [ "airbnb-base", "plugin:jest/recommended" ],
-    "parser": "@babel/eslint-parser",
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint",
+        "no-loops",
+        "jest"
+    ],
+    "extends": [
+        "airbnb-base",
+        "eslint:recommended",
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:jest/recommended"
+    ],
     "parserOptions": {
-        "ecmaVersion": 2021
+        "project": "./tsconfig.json"
     },
     "rules": {
-        "no-console": "off",
-        "no-mixed-spaces-and-tabs": "error",
-        "indent": [ "error", 4, {
+        "semi": "error",
+        "no-console": "warn",
+        "no-loops/no-loops": "error",
+        "indent": ["error", 4, {
             "SwitchCase": 1,
             "VariableDeclarator": 1,
             "outerIIFEBody": 1,
@@ -36,10 +47,12 @@
             "ImportDeclaration": 1,
             "flatTernaryExpressions": false,
             // list derived from https://github.com/benjamn/ast-types/blob/HEAD/def/jsx.js
-            "ignoredNodes": [ "JSXElement", "JSXElement > *", "JSXAttribute", "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression", "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement", "JSXClosingElement", "JSXFragment", "JSXOpeningFragment", "JSXClosingFragment", "JSXText", "JSXEmptyExpression", "JSXSpreadChild" ],
+            "ignoredNodes": ["JSXElement", "JSXElement > *", "JSXAttribute", "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression", "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement", "JSXClosingElement", "JSXFragment", "JSXOpeningFragment", "JSXClosingFragment", "JSXText", "JSXEmptyExpression", "JSXSpreadChild"],
             "ignoreComments": false
-        } ],
-        "mport/no-unresolved": "off",
+        }],
+        "@typescript-eslint/indent": ["error", 4],
+        "no-mixed-spaces-and-tabs": "error",
+        "import/no-unresolved": "off",
         "one-var": "off",
         "global-require": "off",
         "no-restricted-syntax": "off",
@@ -61,7 +74,7 @@
         "vars-on-top": "error",
         "no-shadow": "error",
         "no-bitwise": "error",
-        "class-methods-use-this": "off",
-        "no-new": "off"
+        "no-new": "off",
+        "max-len": ["error", 120]
     }
 }

@@ -5,25 +5,30 @@ import * as render from './render-movies';
 import {
     PER_PAGE, URL_MOVIE, INDEX_PAGE_URL, KEY_USER_DATA,
 } from '../constants';
+import {
+    TResponseData, TMovies, TMovie, TUserData,
+} from './types';
 import { getCurrentPageFromApi } from './helpers';
 
 const getCurrentUrl = (page) => {
     const filtersURL = localStorage.getItem('filtersURL');
     const isFilters = localStorage.getItem('isFiltersApply') === 'true';
-    return isFilters ? `${filtersURL}&page=${page}&per_page=${PER_PAGE}` : `${URL_MOVIE}?page=${page}&per_page=${PER_PAGE}`;
+    return (isFilters
+        ? `${filtersURL}&page=${page}&per_page=${PER_PAGE}`
+        : `${URL_MOVIE}?page=${page}&per_page=${PER_PAGE}`);
 };
 
-export const getMoviesFromAPI = async (page = 1) => {
+export const getMoviesFromAPI = async (page = 1): Promise<TResponseData> => {
     const currentUrl = getCurrentUrl(page);
     try {
         const response = await axios.get(currentUrl);
         return response.data;
     } catch (error) {
-        return [];
+        return error;
     }
 };
 
-export const getMovies = async () => {
+export const getMovies = async (): Promise<void> => {
     try {
         render.showLoader();
         const page = await getMoviesFromAPI(getCurrentPageFromApi() + 1);
@@ -34,10 +39,10 @@ export const getMovies = async () => {
     }
 };
 
-export const getNextPage = async () => {
+export const getNextPage = async (): Promise<void> => {
     try {
-        const movies = helpers.loadPageFromLocalStorage();
-        const page = movies[globalVar.currentPage++];
+        const movies: TMovies = helpers.loadPageFromLocalStorage();
+        const page: Array<TMovie> = movies[globalVar.currentPage++];
         if (page) {
             render.renderPage(page);
             return;
@@ -45,16 +50,16 @@ export const getNextPage = async () => {
         globalVar.currentPage--;
         await getMovies();
         await getNextPage();
-    } catch (error) {
+    } catch {
         render.removeListenerFromLoadBtn(getNextPage);
     } finally {
         setTimeout(helpers.scrollToDownPage, 200);
     }
 };
 
-export const checkAuthorization = async () => {
+export const checkAuthorization = async (): Promise<void> => {
     try {
-        const { token } = JSON.parse(localStorage.getItem(KEY_USER_DATA)) || {};
+        const { token }: TUserData = JSON.parse(localStorage.getItem(KEY_USER_DATA)) || {};
         if (!token) {
             window.location.assign(INDEX_PAGE_URL);
             return;
