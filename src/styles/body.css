@@ -38,7 +38,7 @@ body.scroll-hidden:before {
     background: #000000E6;
     z-index: 5;
 
-    animation: bg-color 0.3s ease-in forwards;
+    animation: bg-color 0.2s ease forwards;
 }
 
 @keyframes bg-color {
