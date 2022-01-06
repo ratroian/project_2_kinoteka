@@ -1,12 +1,16 @@
 import axios from 'axios';
 import { domElements, globalVar } from './global-var';
-import { URL_GENRES, URL_IMG } from '../constants';
+import { URL_GENRES, URL_IMG, CLASS_HIDDEN } from '../constants';
 import {
     clearPagesFromLocalStorage,
     formatRate,
     formatRuntime,
     loadPageFromLocalStorage,
 } from '../movies/helpers';
+
+export const removePageLoader = () => {
+    domElements.loaderFullScreen.classList.toggle(CLASS_HIDDEN); 
+};
 
 export function getInfoAboutFilm() {
     const moviesArr = loadPageFromLocalStorage();
@@ -89,6 +93,7 @@ const handleLoadWindow = async () => {
     globalVar.movieId = Number(window.location.hash.slice(1));
     addMovieDescription(getInfoAboutFilm());
     await getArrayGenres();
+    removePageLoader();
 };
 
 const handleLogOut = (event) => {
