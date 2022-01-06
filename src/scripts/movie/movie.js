@@ -9,7 +9,7 @@ import {
 } from '../movies/helpers';
 
 export const removePageLoader = () => {
-    domElements.loaderFullScreen.classList.toggle(CLASS_HIDDEN); 
+    domElements.loaderFullScreen.classList.toggle(CLASS_HIDDEN);
 };
 
 export function getInfoAboutFilm() {
@@ -52,8 +52,7 @@ const getGenresFromAPI = async () => {
         const response = await axios.get(URL_GENRES);
         return response.data;
     } catch (error) {
-        console.error(error.message);
-        return {};
+        return error;
     }
 };
 
