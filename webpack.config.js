@@ -12,6 +12,7 @@ module.exports = {
         authorization: ['./scripts/authorization/authorization.ts'],
         movies: ['./scripts/movies/movies.ts'],
         movie: ['./scripts/movie/movie.js'],
+        filters: ['./scripts/filters/filters.js'],
     },
     resolve: {
         extensions: ['.ts', '.js'],
@@ -40,7 +41,7 @@ module.exports = {
             filename: 'movies.html',
             template: './movies.html',
             favicon: './images/favicons/favicon.png',
-            chunks: ['main', 'movies'],
+            chunks: ['main', 'movies', 'filters'],
         }),
         new HtmlWebpackPlugin({
             filename: 'movie.html',

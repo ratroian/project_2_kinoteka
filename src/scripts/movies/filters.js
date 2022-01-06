@@ -17,7 +17,7 @@ flatpickr(domElements.releaseDateLast, {
     dateFormat: 'Y-m-d',
 });
 
-const toggleClassFilters = () => {
+export const toggleClassFilters = () => {
     domElements.filterModalBox.classList.toggle('active');
     domElements.filterModalBox.classList.toggle('hide');
     document.body.classList.toggle('scroll-hidden');
