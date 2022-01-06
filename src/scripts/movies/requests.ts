@@ -5,11 +5,23 @@ import * as render from './render-movies';
 import {
     PER_PAGE, URL_MOVIE, INDEX_PAGE_URL, KEY_USER_DATA,
 } from '../constants';
-import { TResponseData, TMovies, TMovie, TUserData } from './types';
+import {
+    TResponseData, TMovies, TMovie, TUserData,
+} from './types';
+import { getCurrentPageFromApi } from './helpers';
+
+const getCurrentUrl = (page) => {
+    const filtersURL = localStorage.getItem('filtersURL');
+    const isFilters = localStorage.getItem('isFiltersApply') === 'true';
+    return (isFilters
+        ? `${filtersURL}&page=${page}&per_page=${PER_PAGE}`
+        : `${URL_MOVIE}?page=${page}&per_page=${PER_PAGE}`);
+};
 
 export const getMoviesFromAPI = async (page = 1): Promise<TResponseData> => {
+    const currentUrl = getCurrentUrl(page);
     try {
-        const response = await axios.get(`${URL_MOVIE}?page=${page}&per_page=${PER_PAGE}`);
+        const response = await axios.get(currentUrl);
         return response.data;
     } catch (error) {
         return error;
@@ -19,7 +31,7 @@ export const getMoviesFromAPI = async (page = 1): Promise<TResponseData> => {
 export const getMovies = async (): Promise<void> => {
     try {
         render.showLoader();
-        const page: TResponseData  = await getMoviesFromAPI(++globalVar.pageFromApi);
+        const page = await getMoviesFromAPI(getCurrentPageFromApi() + 1);
         if (page.movies.length === 0) throw new Error();
         helpers.saveMovies(page.movies);
     } finally {
