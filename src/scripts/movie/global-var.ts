@@ -1,4 +1,6 @@
-export const domElements = {
+import { TDomElements, TGlobalVar } from './types';
+
+export const domElements: TDomElements = {
     movieTemplate: document.querySelector('#movieTemplate').innerHTML,
     movieWrapper: document.querySelector('.movie-wrapper'),
     genreTemplate: document.querySelector('#genreTemplate').innerHTML,
@@ -7,6 +9,6 @@ export const domElements = {
     loaderFullScreen: document.querySelector('.loader-full-screen'),
 };
 
-export const globalVar = {
+export const globalVar: TGlobalVar = {
     movieId: 0,
 };

@@ -26,5 +26,6 @@ export const NO_RATE = 'NR';
 export const GOOD_RATE = 'good-rate';
 export const BAD_RATE = 'bad-rate';
 export const NO_MORE = 'No More';
+export const LOAD_MORE = 'Load More';
 
 export const CLASS_HIDDEN = 'hidden';
