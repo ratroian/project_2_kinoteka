@@ -1,9 +1,11 @@
 import { domElements } from './global-var';
-import { URL_IMG, NO_MORE, CLASS_LOADER } from '../constants';
+import {
+    URL_IMG, NO_MORE, CLASS_LOADER, LOAD_MORE,
+} from '../constants';
 import { formatRuntime, formatRate, getRateState } from './helpers';
 import { TMovie } from './types';
 
-const htmlToElement = (html: string): ChildNode => {
+const createElementFromHtml = (html: string): ChildNode => {
     const template: HTMLTemplateElement = document.createElement('template');
     html = html.trim();
     template.innerHTML = html;
@@ -20,7 +22,7 @@ const getMovieCard = ({
         .replace('{{backdropPath}}', URL_IMG + backdropPath)
         .replace('{{typeRate}}', getRateState(movieRate))
         .replace('{{movieRate}}', formatRate(movieRate));
-    return htmlToElement(html);
+    return createElementFromHtml(html);
 };
 
 const addMovieCard = (movie: TMovie): void => {
@@ -33,12 +35,7 @@ export const renderPage = (movies: Array<TMovie>): void => {
 
 export const disableLoadMoreBtn = (state: boolean): void => {
     domElements.loadMoreBtn.disabled = state;
-};
-
-export const removeListenerFromLoadBtn = (listener: { (): Promise<void>; (this: HTMLButtonElement, ev: MouseEvent): any; }): void => {
-    disableLoadMoreBtn(true);
-    domElements.loadMoreBtn.removeEventListener('click', listener);
-    domElements.loadMoreBtn.textContent = NO_MORE;
+    domElements.loadMoreBtn.textContent = state ? NO_MORE : LOAD_MORE;
 };
 
 export const showLoader = (): void => {

@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 import { domElements } from './global-var';
+import FilterRange from './FilterRange';
 import 'flatpickr/dist/themes/light.css';
 import '../../styles/restyle-flatpickr.css';
 
@@ -16,6 +17,10 @@ flatpickr(domElements.releaseDateLast, {
     altFormat: 'F j, Y',
     dateFormat: 'Y-m-d',
 });
+
+new FilterRange('budget');
+new FilterRange('popularity');
+new FilterRange('revenue');
 
 export const toggleClassFilters = () => {
     domElements.filterModalBox.classList.toggle('active');

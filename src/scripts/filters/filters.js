@@ -2,6 +2,7 @@ import { URL_MOVIE, KEY_MOVIES_PAGES } from '../constants';
 import { domElements, globalVar } from '../movies/global-var';
 import { toggleClassFilters } from '../movies/filters';
 import { getNextPage } from '../movies/requests';
+import { disableLoadMoreBtn } from '../movies/render-movies';
 
 const form = document.querySelector('#filters');
 const disabledButton = document.querySelector('#reset-btn');
@@ -20,15 +21,15 @@ const getUrl = () => {
 
 const formSubmitHandler = (event) => {
     event.preventDefault();
+    globalVar.currentPage = 0;
     domElements.movieList.innerHTML = '';
     toggleClassFilters();
     localStorage.setItem('isFiltersApply', 'true');
     localStorage.setItem('filtersURL', getUrl());
-    globalVar.currentPage = 0;
     localStorage.removeItem(KEY_MOVIES_PAGES);
-    domElements.loadMoreBtn.addEventListener('click', getNextPage);
+    disableLoadMoreBtn(false);
     getNextPage();
-    disabledButton.removeAttribute('disabled');
+    disabledButton.disabled = false;
     filterButton.classList.add('filter-active');
 };
 
@@ -41,7 +42,7 @@ const formResetHandler = (event) => {
     globalVar.currentPage = 0;
     toggleClassFilters();
     getNextPage();
-    disabledButton.setAttribute('disabled', 'disabled');
+    disabledButton.disabled = true;
     filterButton.classList.remove('filter-active');
 };
 

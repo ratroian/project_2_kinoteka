@@ -11,7 +11,7 @@ module.exports = {
         main: ['./scripts/app.ts'],
         authorization: ['./scripts/authorization/authorization.ts'],
         movies: ['./scripts/movies/movies.ts'],
-        movie: ['./scripts/movie/movie.js'],
+        movie: ['./scripts/movie/movie.ts'],
         filters: ['./scripts/filters/filters.js'],
     },
     resolve: {

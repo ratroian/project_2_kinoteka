@@ -10,7 +10,7 @@ export const clearPagesFromLocalStorage = (): void => {
 export const loadPageFromLocalStorage = (): TMovies => (
     JSON.parse(localStorage.getItem(KEY_MOVIES_PAGES)) ?? []
 );
-    
+
 export const savePageToLocalStorage = (value: Array<TMovie>): void => {
     const movies = loadPageFromLocalStorage();
     movies.push(value);
@@ -21,7 +21,7 @@ export const getCurrentPageFromApi = (): number => (
     Math.ceil((loadPageFromLocalStorage().length * MOVIE_ON_PAGE) / PER_PAGE)
 );
 
-export const saveMovies = (movies:  Array<TMovie>): void => {
+export const saveMovies = (movies: Array<TMovie>): void => {
     movies.forEach((item, index, array) => {
         if (index % MOVIE_ON_PAGE !== 0) return;
         const page = array.slice(index, index + MOVIE_ON_PAGE);
@@ -36,9 +36,9 @@ export const formatRuntime = (runtime: number): string => {
     return `${hours}h ${minutes}m`;
 };
 
-export const formatRate = (rate: string|null): string => rate || NO_RATE;
+export const formatRate = (rate: string | null): string => rate || NO_RATE;
 
-export const getRateState = (rate: string|null): string => {
+export const getRateState = (rate: string | null): string => {
     if (rate === null) return BAD_RATE;
     const rateToNumber = Number(rate);
     if (!Number.isFinite(rateToNumber) || rateToNumber < 7) return BAD_RATE;

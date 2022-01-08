@@ -75,6 +75,8 @@
         "no-shadow": "error",
         "no-bitwise": "error",
         "no-new": "off",
-        "max-len": ["error", 120]
+        "max-len": ["error", 120],
+        "import/prefer-default-export": "off",
+        "class-methods-use-this": "off"
     }
 }
