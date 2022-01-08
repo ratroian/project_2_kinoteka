@@ -39,7 +39,7 @@
     align-items: center;
     border: 1px solid var(--light-primary-color);
 }
-.genres-info { 
+.genres-info {
     text-transform: capitalize;
     color: var(--light-primary-color);
     background-color: var(--primary-color);
@@ -83,6 +83,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
 .lds-ellipsis div {
     position: absolute;
     top: 33px;
@@ -122,7 +124,7 @@
     }
     100% {
         transform: scale(0);
-    }     
+    }
 }
 @keyframes lds-ellipsis2 {
     0% {

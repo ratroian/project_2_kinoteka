@@ -4,12 +4,12 @@ import { toggleClassFilters } from '../movies/filters';
 import { getNextPage } from '../movies/requests';
 import { disableLoadMoreBtn } from '../movies/render-movies';
 
-const form = document.querySelector('#filters');
-const disabledButton = document.querySelector('#reset-btn');
-const filterButton = document.querySelector('#filter-btn');
-const formItems = form.querySelectorAll('[data-url]');
+const form: HTMLElement = document.querySelector('#filters');
+const disabledButton: HTMLButtonElement = document.querySelector('#reset-btn');
+const filterButton: HTMLButtonElement = document.querySelector('#filter-btn');
+const formItems: NodeListOf<HTMLFormElement> = form.querySelectorAll('[data-url]');
 
-const getUrl = () => {
+const getUrl = (): string => {
     let result = `${URL_MOVIE}?`;
     formItems.forEach((element) => {
         if (element.value !== '') {
@@ -19,7 +19,7 @@ const getUrl = () => {
     return result;
 };
 
-const formSubmitHandler = (event) => {
+const formSubmitHandler = (event: Event & { target: HTMLElement }): void => {
     event.preventDefault();
     globalVar.currentPage = 0;
     domElements.movieList.innerHTML = '';
@@ -33,7 +33,7 @@ const formSubmitHandler = (event) => {
     filterButton.classList.add('filter-active');
 };
 
-const formResetHandler = (event) => {
+const formResetHandler = (event: Event & { target: HTMLElement }): void => {
     event.preventDefault();
     localStorage.removeItem('isFiltersApply');
     localStorage.removeItem('filtersURL');
