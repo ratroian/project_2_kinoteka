@@ -1,12 +1,4 @@
-type TFilterRangeConstructor = {
-    parentRange: Element,
-    infoMin: HTMLInputElement,
-    infoMax: HTMLInputElement,
-    rangeMin: HTMLInputElement,
-    rangeMax: HTMLInputElement
-};
-
-export default class FilterRange implements TFilterRangeConstructor {
+export default class FilterRange {
     parentRange: Element;
 
     infoMin: HTMLInputElement;

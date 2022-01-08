@@ -4,7 +4,7 @@ import { toggleClassFilters } from '../movies/filters';
 import { getNextPage } from '../movies/requests';
 import { disableLoadMoreBtn } from '../movies/render-movies';
 
-const form: HTMLElement = document.querySelector('#filters');
+const form: HTMLFormElement = document.querySelector('#filters');
 const disabledButton: HTMLButtonElement = document.querySelector('#reset-btn');
 const filterButton: HTMLButtonElement = document.querySelector('#filter-btn');
 const formItems: NodeListOf<HTMLFormElement> = form.querySelectorAll('[data-url]');

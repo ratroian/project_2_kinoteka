@@ -49,9 +49,6 @@
     grid-gap: 20px;
     justify-content: center;
     flex-grow: 1;
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
 }
 
 .not-found-fill {
@@ -165,7 +162,7 @@
 }
 
 .not-fond-wrapper {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -173,7 +170,6 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /*display: none;*/
 }
 
 .svg-not-found {
