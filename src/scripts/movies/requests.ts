@@ -7,6 +7,8 @@ import {
     TResponseData, TMovies, TMovie, TUserData,
 } from './types';
 
+const noMoreBg: HTMLElement = document.querySelector('.not-fond-wrapper');
+
 const getCurrentUrl = (page) => {
     const filtersURL = localStorage.getItem('filtersURL');
     const isFilters = localStorage.getItem('isFiltersApply') === 'true';
@@ -40,6 +42,7 @@ export const getNextPage = async (): Promise<void> => {
     try {
         const movies: TMovies = helpers.loadPageFromLocalStorage();
         const page: Array<TMovie> = movies[globalVar.currentPage++];
+        noMoreBg.style.display = 'none';
         if (page) {
             render.renderPage(page);
             return;
@@ -49,6 +52,7 @@ export const getNextPage = async (): Promise<void> => {
         await getNextPage();
     } catch {
         render.disableLoadMoreBtn(true);
+        noMoreBg.style.display = 'flex';
     } finally {
         setTimeout(helpers.scrollToDownPage, 200);
     }

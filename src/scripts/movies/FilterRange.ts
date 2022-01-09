@@ -1,5 +1,15 @@
 export default class FilterRange {
-    constructor(blockId) {
+    parentRange: Element;
+
+    infoMin: HTMLInputElement;
+
+    infoMax: HTMLInputElement;
+
+    rangeMin: HTMLInputElement;
+
+    rangeMax: HTMLInputElement;
+
+    constructor(blockId:string) {
         this.parentRange = document.querySelector(`#${blockId}`);
         this.infoMin = this.parentRange.querySelector('input[id$="-min"]');
         this.infoMax = this.parentRange.querySelector('input[id$="-max"]');
@@ -13,7 +23,7 @@ export default class FilterRange {
         this.handleRange();
     }
 
-    handleRange = () => {
+    handleRange = (): void => {
         let rangeMinValue = Number(this.rangeMin.value);
         let rangeMaxValue = Number(this.rangeMax.value);
         if (rangeMinValue > rangeMaxValue) {
@@ -23,18 +33,18 @@ export default class FilterRange {
         this.infoMax.value = rangeMaxValue.toLocaleString('en-US');
     };
 
-    handleInfo = (event) => {
-        const input = event.target;
+    handleInfo = (event: Event & { target: HTMLInputElement }): void => {
+        const input: HTMLInputElement = event.target;
         input.value = this.formatValue(input.value);
         this.rangeMin.value = this.deleteNotNumber(this.infoMin.value);
         this.rangeMax.value = this.deleteNotNumber(this.infoMax.value);
     };
 
-    formatValue = (value) => {
-        let newValue = this.deleteNotNumber(value);
-        newValue = newValue ? parseInt(newValue, 10) : 0;
-        return newValue.toLocaleString('en-US');
+    formatValue = (value): string => {
+        const newValue: string = this.deleteNotNumber(value);
+        const newValueParse: number = newValue ? parseInt(newValue, 10) : 0;
+        return newValueParse.toLocaleString('en-US');
     };
 
-    deleteNotNumber = (string) => string.replace(/[\D\s._-]+/g, '');
+    deleteNotNumber = (string:string): string => string.replace(/[\D\s._-]+/g, '');
 }

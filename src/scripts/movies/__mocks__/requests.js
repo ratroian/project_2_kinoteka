@@ -14,7 +14,9 @@ export const getMoviesFromAPI = () => {
             imdb_id: 'tt0044741',
             original_language: 'ja',
             original_title: '生きる',
-            overview: 'Kanji Watanabe is a middle-aged man who has worked in the same monotonous bureaucratic position for decades. Learning he has cancer, he starts to look for the meaning of his life.',
+            overview: 'Kanji Watanabe is a middle-aged man who has worked in the same monotonous bureaucratic'
+                + ' position for decades.'
+                + ' Learning he has cancer, he starts to look for the meaning of his life.',
             popularity: 13.112,
             poster_path: '/dgNTS4EQDDVfkzJI5msKuHu2Ei3.jpg',
             release_date: '1952-10-09T00:00:00.000Z',

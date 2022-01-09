@@ -12,7 +12,7 @@ module.exports = {
         authorization: ['./scripts/authorization/authorization.ts'],
         movies: ['./scripts/movies/movies.ts'],
         movie: ['./scripts/movie/movie.ts'],
-        filters: ['./scripts/filters/filters.js'],
+        filters: ['./scripts/filters/filters.ts'],
     },
     resolve: {
         extensions: ['.ts', '.js'],

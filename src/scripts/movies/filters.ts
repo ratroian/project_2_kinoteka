@@ -22,15 +22,15 @@ new FilterRange('budget');
 new FilterRange('popularity');
 new FilterRange('revenue');
 
-export const toggleClassFilters = () => {
+export const toggleClassFilters = (): void => {
     domElements.filterModalBox.classList.toggle('active');
     domElements.filterModalBox.classList.toggle('hide');
     document.body.classList.toggle('scroll-hidden');
 };
 
-const hideFilters = (event) => {
-    const conditionKeydown = event.type === 'keydown' && event.code === 'Escape';
-    const conditionClick = event.type === 'click' && event.target.id === 'filters-modal';
+const hideFilters = (event: KeyboardEvent & { target: HTMLElement }): void => {
+    const conditionKeydown: boolean = event.type === 'keydown' && event.code === 'Escape';
+    const conditionClick: boolean = event.type === 'click' && event.target.id === 'filters-modal';
 
     if (conditionKeydown || conditionClick) {
         toggleClassFilters();
@@ -39,7 +39,7 @@ const hideFilters = (event) => {
     }
 };
 
-const handleFilters = () => {
+const handleFilters = (): void => {
     toggleClassFilters();
     window.addEventListener('keydown', hideFilters);
     domElements.filterModalBox.addEventListener('click', hideFilters);
