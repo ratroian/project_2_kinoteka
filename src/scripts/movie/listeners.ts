@@ -6,11 +6,14 @@ import { TAnchorEvent } from './types';
 import { getGenresFromAPI } from './requests';
 
 export const handleLoadWindow = async (): Promise<void> => {
-    globalVar.movieId = Number(window.location.hash.slice(1));
-    addMovieDescription(getInfoAboutFilm());
-    const genres = await getGenresFromAPI();
-    renderGenres(getMovieGenres(genres));
-    removePageLoader();
+    try {
+        globalVar.movieId = Number(window.location.hash.slice(1));
+        addMovieDescription(getInfoAboutFilm());
+        const genres = await getGenresFromAPI();
+        renderGenres(getMovieGenres(genres));
+    } finally {
+        removePageLoader();
+    }
 };
 
 export const handleLogOut = (event: TAnchorEvent): void => {

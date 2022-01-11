@@ -13,14 +13,14 @@ const createElementFromHtml = (html: string): ChildNode => {
 };
 
 const getMovieCard = ({
-    id, title, runtime, backdrop_path: backdropPath, movie_rate: movieRate,
+    id, title, runtime, backdrop_path: backdropPath, vote_average: movieRate,
 }: TMovie): ChildNode => {
     const html: string = domElements.filmItemTemplate
         .replace('{{movieId}}', `${id}`)
         .replace('{{title}}', title)
         .replace('{{runtime}}', formatRuntime(runtime))
         .replace('{{backdropPath}}', URL_IMG + backdropPath)
-        .replace('{{typeRate}}', getRateState(movieRate))
+        .replace('{{typeRate}}', getRateState(`${movieRate}`))
         .replace('{{movieRate}}', formatRate(movieRate));
     return createElementFromHtml(html);
 };

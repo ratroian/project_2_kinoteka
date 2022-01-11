@@ -36,7 +36,7 @@ export const formatRuntime = (runtime: number): string => {
     return `${hours}h ${minutes}m`;
 };
 
-export const formatRate = (rate: string | null): string => rate || NO_RATE;
+export const formatRate = (rate: number | null): string => (rate ? `${rate}` : NO_RATE);
 
 export const getRateState = (rate: string | null): string => {
     if (rate === null) return BAD_RATE;

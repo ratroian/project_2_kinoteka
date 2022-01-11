@@ -8,8 +8,8 @@ const postSignIn = async (body: TLogin): Promise<TUserData> => {
     try {
         helpers.setButtonLoader(domElements.signInButton);
         const response = await axios.post(constants.URL_SIGN_IN, body);
-        const { headers, data } = response;
-        return { id: data.userId, token: headers[constants.ACCESS_TOKEN] };
+        const { data, headers } = response;
+        return { id: data.id, token: headers.token };
     } catch (error) {
         return error;
     } finally {

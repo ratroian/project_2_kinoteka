@@ -15,7 +15,7 @@ export const getMovieDescription = ({
     backdrop_path: backdropPath,
     adult,
     runtime,
-    movie_rate: movieRate,
+    vote_average: movieRate,
     overview,
 }: TMovie): ChildNode => {
     const html = domElements.movieTemplate

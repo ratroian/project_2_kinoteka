@@ -3,9 +3,7 @@ import * as helpers from './helpers';
 import * as render from './render-movies';
 import * as constants from '../constants';
 import { globalVar } from './global-var';
-import {
-    TResponseData, TMovies, TMovie, TUserData,
-} from './types';
+import { TMovies, TMovie, TUserData } from './types';
 
 const noMoreBg: HTMLElement = document.querySelector('.not-fond-wrapper');
 
@@ -17,7 +15,7 @@ const getCurrentUrl = (page) => {
         : `${constants.URL_MOVIE}?page=${page}&per_page=${constants.PER_PAGE}`);
 };
 
-export const getMoviesFromAPI = async (page = 1): Promise<TResponseData> => {
+export const getMoviesFromAPI = async (page = 1): Promise<TMovie[]> => {
     const currentUrl = getCurrentUrl(page);
     try {
         const response = await axios.get(currentUrl);
@@ -31,8 +29,8 @@ export const getMovies = async (): Promise<void> => {
     try {
         render.showLoader();
         const page = await getMoviesFromAPI(helpers.getCurrentPageFromApi() + 1);
-        if (page.movies.length === 0) throw new Error();
-        helpers.saveMovies(page.movies);
+        if (page.length === 0) throw new Error();
+        helpers.saveMovies(page);
     } finally {
         render.hideLoader();
     }
