@@ -29,7 +29,7 @@ export const getMovies = async (): Promise<void> => {
     try {
         render.showLoader();
         const page = await getMoviesFromAPI(helpers.getCurrentPageFromApi() + 1);
-        if (page.length === 0) throw new Error();
+        if (!page.length) throw new Error();
         helpers.saveMovies(page);
     } finally {
         render.hideLoader();
@@ -50,7 +50,9 @@ export const getNextPage = async (): Promise<void> => {
         await getNextPage();
     } catch {
         render.disableLoadMoreBtn(true);
-        noMoreBg.style.display = 'flex';
+        if (!localStorage.getItem('moviesPages')) {
+            noMoreBg.style.display = 'flex';
+        }
     } finally {
         setTimeout(helpers.scrollToDownPage, 200);
     }

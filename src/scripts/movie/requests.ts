@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { URL_GENRES } from '../constants';
-import { TGenres, TGenresResponse } from './types';
+import { TMovieData } from './types';
+import { URL_MOVIE_DATA } from '../constants';
 
-export const getGenresFromAPI = async (): Promise<TGenres> => {
+export const getMovieData = async (id: number): Promise<TMovieData> => {
     try {
-        const response = await axios.get<TGenresResponse>(URL_GENRES);
-        return response.data.genres;
+        const response = await axios.get<TMovieData>(`${URL_MOVIE_DATA}${id}`);
+        return response.data;
     } catch (error) {
         return error;
     }

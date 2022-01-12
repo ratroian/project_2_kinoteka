@@ -33,8 +33,7 @@ const formSubmitHandler = (event: Event & { target: HTMLElement }): void => {
     filterButton.classList.add('filter-active');
 };
 
-const formResetHandler = (event: Event & { target: HTMLElement }): void => {
-    event.preventDefault();
+const formResetHandler = (): void => {
     localStorage.removeItem('isFiltersApply');
     localStorage.removeItem('filtersURL');
     localStorage.removeItem(KEY_MOVIES_PAGES);

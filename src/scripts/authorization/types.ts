@@ -24,11 +24,3 @@ export type TUserSignUp = {
     login: string,
     password: string,
 };
-
-export type TSignUp = {
-    message: string,
-};
-
-export type TMessage = {
-    message: string,
-};
