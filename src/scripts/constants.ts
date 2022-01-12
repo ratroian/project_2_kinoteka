@@ -1,11 +1,10 @@
 export const URL_IMG = 'https://image.tmdb.org/t/p/original/';
-export const API_URL = 'https://wowmeup.pp.ua';
 export const NEW_API_URL = 'http://localhost:3001';
 
 export const URL_MOVIE = `${NEW_API_URL}/movies`;
 export const URL_SIGN_IN = `${NEW_API_URL}/log-in`;
 export const URL_SIGN_UP = `${NEW_API_URL}/create-user`;
-export const URL_MOVIE_DATA = 'http://localhost:3001/movie/?id=';
+export const URL_MOVIE_DATA = `${NEW_API_URL}/movie/?id=`;
 
 export const MOVIES_PAGE_URL = './movies.html';
 export const INDEX_PAGE_URL = './index.html';
