@@ -23,7 +23,7 @@ export type TMovie = {
     homepage: string,
     id: number,
     imdb_id: string,
-    movie_rate: null|string,
+    vote_average: number,
     original_language: string,
     original_title: string,
     overview: string,
@@ -35,12 +35,6 @@ export type TMovie = {
     status: string,
     tagline: string,
     title: string,
-};
-
-export type TResponseData = {
-    totalCount: number,
-    movies: Array<TMovie>,
-    currentPage: number,
 };
 
 export type TMovies = Array<Array<TMovie>>;

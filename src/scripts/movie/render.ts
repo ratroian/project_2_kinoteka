@@ -1,7 +1,7 @@
 import { domElements } from './global-var';
 import { URL_IMG } from '../constants';
 import { formatRate, formatRuntime } from '../movies/helpers';
-import { TMovie } from '../movies/types';
+import { TMovieData } from './types';
 
 export const createElementFromHtml = (html: string): ChildNode => {
     const template: HTMLTemplateElement = document.createElement('template');
@@ -15,9 +15,9 @@ export const getMovieDescription = ({
     backdrop_path: backdropPath,
     adult,
     runtime,
-    movie_rate: movieRate,
+    vote_average: movieRate,
     overview,
-}: TMovie): ChildNode => {
+}: TMovieData): ChildNode => {
     const html = domElements.movieTemplate
         .replace('{{title}}', title)
         .replace('{{backdropPath}}', URL_IMG + backdropPath)
@@ -28,7 +28,7 @@ export const getMovieDescription = ({
     return createElementFromHtml(html);
 };
 
-export const addMovieDescription = (movie: TMovie): void => {
+export const addMovieDescription = (movie: TMovieData): void => {
     domElements.movieWrapper.append(getMovieDescription(movie));
 };
 

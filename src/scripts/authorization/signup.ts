@@ -1,18 +1,18 @@
 import axios from 'axios';
-import { TUserSignUp, TSignUp, TMessage } from './types';
+import { TUserSignUp } from './types';
 import * as constants from '../constants';
 import * as helpers from './helpers';
 import domElements from './global-var';
 
-const postSignUp = async (body: TUserSignUp): Promise<TSignUp> => {
+const postSignUp = async (body: TUserSignUp): Promise<number> => {
     try {
         helpers.setButtonLoader(domElements.signUpButton);
         const response = await axios.post(constants.URL_SIGN_UP, body);
-        return response.data;
+        return response.status;
     } catch (error) {
-        const { message }: TMessage = error.response.data;
-        if (message?.includes(constants.ALREADY_EXIST)) {
-            helpers.showMessageError(message);
+        const { data } = error.response;
+        if (data?.includes(constants.EXIST_MESSAGE)) {
+            helpers.showMessageError(constants.USER_ALREADY);
         } else {
             helpers.showMessageError(constants.STATUS_REGISTRATION_BAD);
         }
@@ -23,8 +23,8 @@ const postSignUp = async (body: TUserSignUp): Promise<TSignUp> => {
 };
 
 const checkRequest = async (body: TUserSignUp): Promise<void> => {
-    const responseSignUp: TSignUp = await postSignUp(body);
-    if (responseSignUp.message === constants.STATUS_REGISTRATION) {
+    const responseStatus: number = await postSignUp(body);
+    if (responseStatus === 201) {
         helpers.showMessageError(constants.STATUS_REGISTRATION);
         setTimeout(() => {
             window.location.assign(constants.INDEX_PAGE_URL);
