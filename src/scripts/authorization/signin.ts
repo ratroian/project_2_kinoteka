@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TLogin, TUserData } from './types';
+import { TLogin, TUserData, TFormSignIn } from './types';
 import * as constants from '../constants';
 import * as helpers from './helpers';
 import domElements from './global-var';
@@ -29,12 +29,37 @@ const checkRequestSignIn = async (body: TLogin): Promise<void> => {
     }
 };
 
+const isValidFormSignIn = ({ login, password }: TFormSignIn): boolean => {
+    const { status: loginStatus, message: loginMessage } = helpers.isValidLogin(login.value);
+    const { status: passwordStatus, message: passwordMessage } = helpers.isValidPassword(password.value);
+
+    helpers.removeClassToElement(login);
+    helpers.removeClassToElement(password);
+
+    switch (false) {
+        case loginStatus:
+            helpers.showMessageValidation(login, loginMessage);
+            return false;
+        case passwordStatus:
+            helpers.showMessageValidation(password, passwordMessage);
+            return false;
+        default:
+            return true;
+    }
+};
+
 const handleSubmitFormSignIn = async (event: Event & { target: HTMLFormElement }): Promise<void> => {
     event.preventDefault();
     const form: HTMLFormElement = event.target;
-    const login: string = (form.querySelector('#signin__login') as HTMLInputElement).value;
-    const password: string = (form.querySelector('#signin__password') as HTMLInputElement).value;
-    await checkRequestSignIn({ login, password });
+    const login: HTMLInputElement = (form.querySelector('#signin__login') as HTMLInputElement);
+    const password: HTMLInputElement = (form.querySelector('#signin__password') as HTMLInputElement);
+
+    if (!isValidFormSignIn({ login, password })) return;
+
+    await checkRequestSignIn({
+        login: login.value,
+        password: password.value,
+    });
 };
 
 export default handleSubmitFormSignIn;

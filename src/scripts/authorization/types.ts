@@ -24,3 +24,20 @@ export type TUserSignUp = {
     login: string,
     password: string,
 };
+
+export type TErrorObject = {
+    status: boolean,
+    message: string,
+};
+
+export type TFormSignUp = {
+    login: HTMLInputElement,
+    password: HTMLInputElement,
+    firstName: HTMLInputElement,
+    lastName: HTMLInputElement,
+};
+
+export type TFormSignIn = {
+    login: HTMLInputElement,
+    password: HTMLInputElement,
+};

@@ -1,13 +1,12 @@
-import { URL_MOVIE, KEY_MOVIES_PAGES } from '../constants';
-import { domElements, globalVar } from '../movies/global-var';
-import { toggleClassFilters } from '../movies/filters';
-import { getNextPage } from '../movies/requests';
-import { disableLoadMoreBtn } from '../movies/render-movies';
+import { URL_MOVIE, KEY_MOVIES_PAGES, CLASS_FILTER_ACTIVE } from '../../constants';
+import { domElements, globalVar } from '../global-var';
+import { toggleClassFilters } from './filters-constructor';
+import { getNextPage } from '../requests';
+import { disableLoadMoreBtn } from '../render-movies';
 
-const form: HTMLFormElement = document.querySelector('#filters');
-const disabledButton: HTMLButtonElement = document.querySelector('#reset-btn');
-const filterButton: HTMLButtonElement = document.querySelector('#filter-btn');
-const formItems: NodeListOf<HTMLFormElement> = form.querySelectorAll('[data-url]');
+import {
+    form, disabledButton, filterButton, formItems,
+} from './dom-elements-filters';
 
 const getUrl = (): string => {
     let result = `${URL_MOVIE}?`;
@@ -30,7 +29,7 @@ const formSubmitHandler = (event: Event & { target: HTMLElement }): void => {
     disableLoadMoreBtn(false);
     getNextPage();
     disabledButton.disabled = false;
-    filterButton.classList.add('filter-active');
+    filterButton.classList.add(CLASS_FILTER_ACTIVE);
 };
 
 const formResetHandler = (): void => {
@@ -42,7 +41,7 @@ const formResetHandler = (): void => {
     toggleClassFilters();
     getNextPage();
     disabledButton.disabled = true;
-    filterButton.classList.remove('filter-active');
+    filterButton.classList.remove(CLASS_FILTER_ACTIVE);
 };
 
 form.addEventListener('submit', formSubmitHandler);

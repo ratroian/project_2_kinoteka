@@ -1,6 +1,6 @@
 import { domElements } from './global-var';
 import { checkAuthorization, getNextPage } from './requests';
-import handleFilters from './filters';
+import handleFilters from './filters/filters-constructor';
 import { handleLogOut, openFilmCard } from './listeners';
 
 domElements.movieList.addEventListener('click', openFilmCard);
