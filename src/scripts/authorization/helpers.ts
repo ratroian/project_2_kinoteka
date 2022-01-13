@@ -1,5 +1,7 @@
 import * as constants from './constants';
 import domElements from './global-var';
+import { REGEX } from './regex';
+import { TErrorObject } from './types';
 
 const createElementFromHtml = (htmlString: string): ChildNode => {
     const template: HTMLTemplateElement = document.createElement('template');
@@ -52,34 +54,51 @@ export const showMessageValidation = (element: HTMLElement, content: string): vo
     addTextContentToElement(element, content);
 };
 
-export const generateMessageValidation = (event: Event & { target: HTMLInputElement }) => {
-    const { target } = event;
-    const valueLength = target.value.length;
-    removeClassToElement(target);
-
-    switch (true) {
-        case (valueLength < constants.MIN_NAME_LENGTH):
-            showMessageValidation(target, `${constants.MIN_NAME_LENGTH - valueLength} more characters.`);
-            break;
-        case (valueLength > constants.MAX_NAME_LENGTH && !domElements.passwordSignIn):
-            showMessageValidation(target, `${constants.MAX_NAME_LENGTH - valueLength} more characters.`);
-            break;
-        case (target.classList.contains(constants.CLASS_PASSWORD) && valueLength < constants.MIN_PASSWORD_LENGTH):
-            showMessageValidation(target, constants.TEXT_CONTENT_PASSWORD_MESSAGE);
-            break;
-        case (target.classList.contains(constants.CLASS_LOGIN) && constants.REGULAR.test(target.value)):
-            showMessageValidation(target, constants.TEXT_CONTENT_LOGIN_MESSAGE);
-            break;
-        default:
-            target.setCustomValidity('');
-            target.reportValidity();
-    }
-};
-
 export const handleLoadWindow = () => {
     if (checkToken()) {
         setTimeout(() => {
             window.location.assign(constants.MOVIES_PAGE_URL);
         }, constants.QUANTITY_SET_TIMEOUT_SEC * 1000);
+    }
+};
+
+export const isValidName = (name: string): TErrorObject => {
+    switch (true) {
+        case (!REGEX.STARTS_WITH_UPPERCASE_LETTER.test(name)):
+            return { status: false, message: 'Starts with uppercase letter' };
+        case (!REGEX.ONLY_LATIN_LETTERS.test(name)):
+            return { status: false, message: 'Only latin letters' };
+        case (name.length < 2):
+            return { status: false, message: 'Min two characters' };
+        default:
+            return { status: true, message: '' };
+    }
+};
+
+export const isValidLogin = (login: string): TErrorObject => {
+    switch (true) {
+        case (!REGEX.ONLY_LATIN_LETTERS_AND_NUMBERS.test(login)):
+            return { status: false, message: 'Only latin letters and numbers' };
+        case (login.length < 4 || login.length > 20):
+            return { status: false, message: 'From 4 to 20 characters' };
+        case (!REGEX.STARTS_WITH_LETTER.test(login)):
+            return { status: false, message: 'Starts with letter' };
+        default:
+            return { status: true, message: '' };
+    }
+};
+
+export const isValidPassword = (password: string): TErrorObject => {
+    switch (true) {
+        case (password.length < 8):
+            return { status: false, message: 'Min 8 symbols' };
+        case (!REGEX.MINIMUM_ONE_NUMBER.test(password)):
+            return { status: false, message: 'Min one number' };
+        case (!REGEX.MINIMUM_ONE_LOWERCASE.test(password)):
+            return { status: false, message: 'Min one lowercase letter' };
+        case (!REGEX.MINIMUM_ONE_UPPERCASE.test(password)):
+            return { status: false, message: 'Min one uppercase letter' };
+        default:
+            return { status: true, message: '' };
     }
 };
