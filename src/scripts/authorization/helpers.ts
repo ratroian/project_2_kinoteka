@@ -65,11 +65,11 @@ export const handleLoadWindow = () => {
 export const isValidName = (name: string): TErrorObject => {
     switch (true) {
         case (!REGEX.STARTS_WITH_UPPERCASE_LETTER.test(name)):
-            return { status: false, message: 'Starts with uppercase letter' };
+            return { status: false, message: constants.MESSAGE_UPPERCASE_LETTER };
         case (!REGEX.ONLY_LATIN_LETTERS.test(name)):
-            return { status: false, message: 'Only latin letters' };
+            return { status: false, message: constants.MESSAGE_LATIN_LETTER };
         case (name.length < 2):
-            return { status: false, message: 'Min two characters' };
+            return { status: false, message: constants.MESSAGE_MIN_CHARACTERS };
         default:
             return { status: true, message: '' };
     }
@@ -78,11 +78,11 @@ export const isValidName = (name: string): TErrorObject => {
 export const isValidLogin = (login: string): TErrorObject => {
     switch (true) {
         case (!REGEX.ONLY_LATIN_LETTERS_AND_NUMBERS.test(login)):
-            return { status: false, message: 'Only latin letters and numbers' };
+            return { status: false, message: constants.MESSAGE_LATIN_LETTER_AND_NUMBERS };
         case (login.length < 4 || login.length > 20):
-            return { status: false, message: 'From 4 to 20 characters' };
+            return { status: false, message: constants.MESSAGE_RANGE_CHARACTERS };
         case (!REGEX.STARTS_WITH_LETTER.test(login)):
-            return { status: false, message: 'Starts with letter' };
+            return { status: false, message: constants.MESSAGE_START_WITH_LETTER };
         default:
             return { status: true, message: '' };
     }
@@ -91,13 +91,13 @@ export const isValidLogin = (login: string): TErrorObject => {
 export const isValidPassword = (password: string): TErrorObject => {
     switch (true) {
         case (password.length < 8):
-            return { status: false, message: 'Min 8 symbols' };
+            return { status: false, message: constants.MESSAGE_MIN_SYMBOLS };
         case (!REGEX.MINIMUM_ONE_NUMBER.test(password)):
-            return { status: false, message: 'Min one number' };
+            return { status: false, message: constants.MESSAGE_MIN_NUMBERS };
         case (!REGEX.MINIMUM_ONE_LOWERCASE.test(password)):
-            return { status: false, message: 'Min one lowercase letter' };
+            return { status: false, message: constants.MESSAGE_LOWER_CASE_LETTER };
         case (!REGEX.MINIMUM_ONE_UPPERCASE.test(password)):
-            return { status: false, message: 'Min one uppercase letter' };
+            return { status: false, message: constants.MESSAGE_ONE_UPPERCASE_LETTER };
         default:
             return { status: true, message: '' };
     }
