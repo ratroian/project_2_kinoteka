@@ -1,8 +1,8 @@
 import flatpickr from 'flatpickr';
-import { domElements } from './global-var';
+import { domElements } from '../global-var';
 import FilterRange from './filter-range';
 import 'flatpickr/dist/themes/light.css';
-import '../../styles/restyle-flatpickr.css';
+import '../../../styles/restyle-flatpickr.css';
 
 flatpickr(domElements.releaseDateFirst, {
     wrap: true,

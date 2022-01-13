@@ -32,3 +32,4 @@ export const USER_ALREADY = 'User Already Exist';
 export const EXIST_MESSAGE = 'unique constraint';
 
 export const CLASS_HIDDEN = 'hidden';
+export const CLASS_FILTER_ACTIVE = 'filter-active';
