@@ -1,8 +1,8 @@
-import { URL_MOVIE, KEY_MOVIES_PAGES } from '../constants';
-import { domElements, globalVar } from '../movies/global-var';
-import { toggleClassFilters } from '../movies/filters';
-import { getNextPage } from '../movies/requests';
-import { disableLoadMoreBtn } from '../movies/render-movies';
+import { URL_MOVIE, KEY_MOVIES_PAGES } from '../../constants';
+import { domElements, globalVar } from '../global-var';
+import { toggleClassFilters } from '../filters-constructor';
+import { getNextPage } from '../requests';
+import { disableLoadMoreBtn } from '../render-movies';
 
 const form: HTMLFormElement = document.querySelector('#filters');
 const disabledButton: HTMLButtonElement = document.querySelector('#reset-btn');

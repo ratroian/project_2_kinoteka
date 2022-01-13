@@ -1,6 +1,6 @@
 import flatpickr from 'flatpickr';
 import { domElements } from './global-var';
-import FilterRange from './FilterRange';
+import FilterRange from './filter-range';
 import 'flatpickr/dist/themes/light.css';
 import '../../styles/restyle-flatpickr.css';
 
